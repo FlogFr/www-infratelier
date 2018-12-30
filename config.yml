@@ -1,0 +1,58 @@
+---
+base_url: "http://localhost:8000"
+production: False
+app_port: 8000
+email_debug: True
+blog_entries:
+  "en":
+    "EN Food truck":
+      - template: first-article-food-truck.html
+        slug: first-article-food-truck
+        title: EN First article food truck
+        updated: 2003-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+    "EN Food bike":
+      - template: second-article-food-bike.html
+        slug: second-article-food-bike
+        title: EN Second article food bike
+        updated: 2012-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+  "pl":
+    "PL Food truck":
+      - template: first-article-food-truck.html
+        slug: first-article-food-truck
+        title: PL First article food truck
+        updated: 2003-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+    "PL Food bike":
+      - template: second-article-food-bike.html
+        slug: second-article-food-bike
+        title: PL Second article food bike
+        updated: 2012-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+  "fr":
+    "Food truck":
+      - template: first-article-food-truck.html
+        slug: first-article-food-truck
+        title: FR First article food truck
+        updated: 2003-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+    "Food bike":
+      - template: second-article-food-bike.html
+        slug: second-article-food-bike
+        title: FR Second article food bike
+        updated: 2012-12-13T18:30:02Z
+        summary: sum sum sum
+        author_name: Author Name
+        author_email: author@example.com
+...
