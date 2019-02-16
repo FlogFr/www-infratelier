@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{FrontAPI} \PYG{o+ow}{=}
+    \PYG{c+c1}{\PYGZhy{}\PYGZhy{} Public Area}
+    \PYG{k+kt}{Header} \PYG{l+s}{\PYGZdq{}X\PYGZhy{}Real\PYGZhy{}IP\PYGZdq{}} \PYG{k+kt}{Text} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{QueryParam} \PYG{l+s}{\PYGZdq{}lat\PYGZdq{}} \PYG{k+kt}{Double} \PYG{k+kt}{:\PYGZgt{}} \PYG{o}{...} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{Get} \PYG{k+kt}{\PYGZsq{}[HTML]} \PYG{k+kt}{H}\PYG{o}{.}\PYG{k+kt}{Html}
+    \PYG{c+c1}{\PYGZhy{}\PYGZhy{} ...}
+    \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{l+s}{\PYGZdq{}account\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{Get} \PYG{k+kt}{\PYGZsq{}[HTML]} \PYG{k+kt}{H}\PYG{o}{.}\PYG{k+kt}{Html}
+    \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{l+s}{\PYGZdq{}account\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{MultipartForm} \PYG{k+kt}{Mem} \PYG{k+kt}{AccountForm} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{Post} \PYG{k+kt}{\PYGZsq{}[HTML]} \PYG{k+kt}{H}\PYG{o}{.}\PYG{k+kt}{Html}
+\end{Verbatim}

@@ -1,19 +1,133 @@
 <!DOCTYPE html>
-<head>
-    <title>Haskraft - Web Crafter Consultant</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Haskraft" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
 
-    <link rel="shortcut icon" type="image/png" href="/static/favico.png" >
-    <link rel="stylesheet" type="text/css" href="/static/normalize.css" >
-    <style>{{{css}}}</style>
+<head>
+{{> part.head.html}}
+
 </head>
 
 <body>
-    <header>
-    </header>
-    <div class="background-main">
-    </div>
+    {{> part.nav.header.html}}
+
+    <section class="hero is-large header-mountains">
+        <div class="hero-body m-t-xl">
+            <div class="container content has-text-right">
+                <h1 class="title has-text-white has-text-classy has-text-weight-semibold is-1">Infrastructure Studio</h1>
+                <h2 class="subtitle has-text-white has-text-weight-light is-4">Nous guidons votre produit vers une infrastructure plus résiliente, performante, sécurisé</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section header-world">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-half content box">
+                    <h1 class="title is-3 has-text-classy">Votre produit comprend votre infrastructure</h1>
+                    <p class="has-text-justified" style="line-height: 2rem;" >
+                    La pluspart des entreprises réalisent l'importance de
+                    l'infrastructure sur le fait accompli.</br>
+                    Votre produit comprend l'infrastructure, et votre
+                    infrastructure supporte votre produit.</br>
+                    Vous devez prendre en compte l'infrastructure de votre
+                    produit au sérieux des le début. Cela vous fera gagner du
+                    temps et de l'argent au long terme.
+                    </p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half content box">
+                    <h1 class="title is-3 has-text-classy">Votre produit hautement disponible 24h par jour, 7 jours sur 7</h1>
+                    <h2 class="subtitle has-text-primary has-text-weight-light
+                    is-5"><i class="uil uil-cog p-r-sm"></i>Haute Disponibilité</h2>
+                    <p class="has-text-justified" style="line-height: 2rem;" >
+                    Nous sommes experts sur des technologies éprouvées depuis
+                    des dizaines d'années dans le domaine de la haute
+                    disponibilité.</br>
+                    Avec des paramètres ajustés à votre produit, votre produit
+                    utilisera pleinement les possibilité de ces technologies
+                    pour atteindre des disponibilités records.
+                    </p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half is-offset-half content box">
+                    <h1 class="title is-3 has-text-classy">Sécurisez vos données</h1>
+                    <h2 class="subtitle has-text-primary has-text-weight-light
+                        is-5"><i class="uil uil-shield-check p-r-sm"></i>Sécurité</h2>
+                    <p class="has-text-justified" style="line-height: 2rem;" >
+                    Les données de votre produit est le cerveaux, le réseau
+                    représente les nerfs, et les services sont les muscles.</br>
+                    La sécurité de vos données est notre priorité.
+                    </p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half content box">
+                    <h1 class="title is-3 has-text-classy">Personne n'aime attendre, encore moins vos clients</h1>
+                    <h2 class="subtitle has-text-primary has-text-weight-light
+                        is-5"><i class="uil uil-analysis p-r-sm"></i>Performance</h2>
+                    <p class="has-text-justified" style="line-height: 2rem;" >
+                    Nous écoutons précisement vos besoins pour faire en sorte
+                    que votre produit correspondent aux attentes des clients en
+                    terme de SLA. Si votre produit n'a pas de SLA, nous vous
+                    aidons à les définir au travers de tests de performances.
+                    </p>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-half is-offset-half content box">
+                    <h1 class="title is-3 has-text-classy">Controllez votre futur</h1>
+                    <h2 class="subtitle has-text-primary has-text-weight-light is-5"><i class="uil uil-chart p-r-sm"></i>Monitorez votre infrastructure et prévoyez vos besoins</h2>
+                    <p class="has-text-justified" style="line-height: 2rem;" >
+                    Grace à des technologies à la pointe comme prometheus,
+                    votre monitoring de votre infrastructure vous permettra de
+                    controller vos couts d'infrastructure et même de les
+                    prévoir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero is-medium header-invitation">
+        <div class="hero-body m-t-xl">
+            <div class="container columns content has-text-right">
+                <div class="column is-half is-offset-half">
+                    <h1 class="title has-text-white has-text-classy has-text-weight-light is-1">Newsletter</h1>
+                    <h2 class="subtitle has-text-white has-text-weight-light is-4">Soyez le premier à être au courant des nouvelles dans le domaine de l'infrastructure</h2>
+
+                    <form class="form is-marginless" role="form" action="/newsletter" method="post">
+                        <div class="secret-input" style="display: none;"></div>
+                        <div class="field has-addons">
+                            <div class="control has-icons-left" style="100%" >
+                                <input class="input is-medium" type="email" name="email" placeholder="email.adress@gmail.com">
+                                <span class="icon is-small is-left">
+                                    <i class="uil uil-envelope"></i>
+                                </span>
+                            </div>
+                            <div class="control">
+                                <button class="button is-medium" type="submit"><i class="uil uil-check p-r-sm"></i>Rejoindre la newsletter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/index.bundle.js"></script>
 </body>
+</html>

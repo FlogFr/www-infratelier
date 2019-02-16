@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
+
+<head>
+{{> part.head.html}}
+</head>
+
+<body>
+    {{> part.nav.header.html}}
+
+    <section class="hero is-large header-invitation">
+        <div class="hero-body m-t-xl">
+            <div class="container content" style="min-height: 10rem;">
+                <h1 class="title has-text-classy has-text-weight-light is-1">Newsletter</h1>
+                <h2 class="subtitle has-text-weight-light">Nous vous informons de toutes les nouvelles dans le domaine de l'infrastructure</h2>
+                {{#messages}}
+                <article class="message is-{{level}}">
+                    <div class="message-body">
+                        {{description}}
+                    </div>
+                </article>
+                {{/messages}}
+                <form class="form columns" role="form" action="/newsletter" method="post">
+                    <div class="secret-input" style="display: none;"></div>
+                    <div class="field has-addons">
+                        <div class="control has-icons-left">
+                            <input class="input is-medium" type="email" name="email" placeholder="email.adress@gmail.com">
+                            <span class="icon is-small is-left">
+                                <i class="uil uil-envelope"></i>
+                            </span>
+                        </div>
+                        <div class="control">
+                            <button class="button is-medium" type="submit"><i class="uil uil-check p-r-sm"></i>Rejoindre la newsletter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/form.bundle.js"></script>
+</body>
+</html>

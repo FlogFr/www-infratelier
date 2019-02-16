@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+// import custom fonts
+@import "./fonts.scss";
+
+// Import only what you need from Bulma
+// $primary: hsl(0, 62%, 40%); // royal red
+$primary: hsl(218, 67%, 68%); // blue pastelle
+$secondary: hsl(61, 83%, 56%);
+
+// $link: hsl(0, 0%, 30%);
+$link: hsl(0, 0%, 30%);
+$link-hover: $primary;
+$navbar-item-hover-color: $primary;
+
+// $breadcrumb-item-color: white;
+$footer-background-color: rgba(0, 0, 0, 0.1);
+$family-sans-serif: "Montserrat", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default
+$family-serif: serif !default;
+$family-handwriting: "Kalam", serif;
+
+@import "spacing.scss";
+@import "./bulma/utilities/_all.sass";
+@import "./bulma/base/_all.sass";
+@import "./bulma/components/_all.sass";
+@import "./bulma/elements/_all.sass";
+@import "./bulma/grid/_all.sass";
+@import "./bulma/layout/_all.sass";
+// bulma-carousel
+@import "bulma-carousel/css/bulma-carousel.sass";
+
+.header-cables {
+	background: url("/static/images/cables.1.jpg");
+	background-size: cover;
+	background-position: bottom center;
+}
+
+.header-invitation {
+	background: url("/static/images/clouds.1.jpg");
+	background-size: cover;
+	background-position: bottom center;
+}
+
+.header-blog {
+	background: url("/static/images/blog.1.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+
+.header-contact {
+	background: url("/static/images/connect.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+
+.header-world {
+	background: url("/static/images/world.map.jpg");
+	background-size: cover;
+	background-position: bottom center;
+}
+
+.header-admin {
+	background: url("/static/images/admin.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+
+.header-mountains {
+	background: url("/static/images/mountains.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+
+#background-lifetime {
+
+	background: url("/static/images/lifetime.desktop.png");
+	@media only screen and (max-width: 700px){
+		background: url("/static/images/lifetime.mobile.png");
+	}
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.has-text-classy {
+	font-family: "Abhaya Libre", $family-serif;
+}
+
+.is-facebook {
+	background: #3b5998;
+}
+
+
+.footer {
+	.footer-social {
+		background-color: $primary;
+
+		.level-left {
+			height: 3rem;
+		}
+	}
+
+	.footer-listing {
+		ul {
+			li {
+				margin-top: 0.8rem;
+			}
+		}
+	}
+
+}

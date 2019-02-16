@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Only my opinion in this talk, trust me}{2}{0}{1}
+\beamer@sectionintoc {2}{The solution to all your problems}{6}{0}{2}
+\beamer@sectionintoc {3}{I have a web project}{8}{0}{3}
+\beamer@sectionintoc {4}{So I finished one project?}{12}{0}{4}
+\beamer@sectionintoc {5}{Can I apply now this success to the backend development?}{15}{0}{5}
+\beamer@sectionintoc {6}{What else? Let's start to learn it!}{17}{0}{6}
+\beamer@sectionintoc {7}{I want to make an API for my project, in Haskell!}{34}{0}{7}

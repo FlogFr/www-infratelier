@@ -1,0 +1,102 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: frontend-nginx-conf
+  namespace: "{{.Values.namespace}}"
+data:
+  nginx.conf: |
+    worker_processes 1;
+    # daemon off;
+    
+    events {
+        worker_connections 2048;
+    }
+    
+    http {
+        server {
+            listen 80;
+            root /var/www;
+    
+            location /static/ {
+                include /etc/nginx/mime.types;
+                alias /var/www/;
+            }
+    
+            location /static/dist/ {
+                include /etc/nginx/mime.types;
+                alias /var/www/dist/;
+            }
+
+            location /static/dist/css/ {
+                include /etc/nginx/mime.types;
+                alias /var/www/dist/;
+            }
+        }
+    }
+  mime.types: |
+    types {
+      text/html                             html htm shtml;
+      text/css                              css;
+      text/xml                              xml;
+      image/gif                             gif;
+      image/jpeg                            jpeg jpg;
+      application/x-javascript              js;
+      application/atom+xml                  atom;
+      application/rss+xml                   rss;
+    }
+
+---
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: backend-nginx-conf
+  namespace: "{{.Values.namespace}}"
+data:
+  nginx.conf: |
+    worker_processes 1;
+    # daemon off;
+    
+    events {
+        worker_connections 2048;
+    }
+    
+    http {
+        server {
+            listen 80;
+
+            location /admin {
+                auth_basic            "Administration Area";
+                auth_basic_user_file  /etc/nginx/auth.htpasswd;
+
+                proxy_pass            http://127.0.0.1:8080;
+                proxy_set_header      Host            $host;
+                proxy_set_header      X-Real-IP       $remote_addr;
+                proxy_set_header      X-Forwarded-for $remote_addr;
+                port_in_redirect      off;
+                proxy_connect_timeout 300;
+            }
+    
+            location / {
+                proxy_pass            http://127.0.0.1:8080;
+                proxy_set_header      Host            $host;
+                proxy_set_header      X-Real-IP       $remote_addr;
+                proxy_set_header      X-Forwarded-for $remote_addr;
+                port_in_redirect      off;
+                proxy_connect_timeout 300;
+            }
+        }
+    }
+  auth.htpasswd: |
+    infratelier:$apr1$2sOovrl5$1ZS1nw61wg7YtWMKRqA3g0
+  mime.types: |
+    types {
+      text/html                             html htm shtml;
+      text/css                              css;
+      text/xml                              xml;
+      image/gif                             gif;
+      image/jpeg                            jpeg jpg;
+      application/x-javascript              js;
+      application/atom+xml                  atom;
+      application/rss+xml                   rss;
+    }

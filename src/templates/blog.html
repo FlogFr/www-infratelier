@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
+
+<head>
+{{> part.head.html}}
+</head>
+
+<body>
+    {{> part.nav.header.html}}
+
+    <section class="hero is-medium header-blog">
+        <div class="hero-body m-t-xl">
+            <div class="container content">
+                <h1 class="title has-text-white has-text-classy has-text-weight-light is-1">Blog</h1>
+                <h2 class="subtitle has-text-white has-text-weight-light
+                    is-4">Nous partageons notre vision de l'informatique avec le monde</h2>
+            </div>
+        </div>
+    </section>
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/index.bundle.js"></script>
+</body>
+</html>

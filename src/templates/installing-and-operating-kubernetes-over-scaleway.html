@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
+
+<head>
+{{> part.head.html}}
+
+</head>
+
+<body>
+    {{> part.nav.header.html}}
+
+    <h1>Installing and Operating Kubernetes over Scaleway for less than 100 euros a month</h1>
+
+    <h2>Requirements</h2>
+    <p>Before all projects, we need to look at the requirements. We currently
+    manage around 20 websites with different requirements in terms of
+    technologies at infratelier. We have automized the provisioning of these
+    websites on top of VMs. Most of them are hosted by Hetzner, and couple by
+    Scaleway. This costs around 80 euros a month. To optimize the resource
+    utilization, we decided to install and operate a Kubernetes cluster. The
+    two main requirements for the kubernetes cluster is to scale up with
+    additional worker nodes, and also have all the network encrypted.</p>
+
+    <p>If you look around in the hosting provider world for cheap dedicated
+    server, there was a small revolution with Scaleway. It provides cheap and
+    fast dedicated server with good network bandwith. We decided to go with two
+    C2L instances for the Kubernetes nodes, and one C2M for the Kubernetes
+    master, for a total of ~70 euros a month.</p>
+
+    <h3>References</h3>
+    <ul>
+      <li>Kubernetes in Action</li>
+    </ul>
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/index.bundle.js"></script>
+</body>
+</html>

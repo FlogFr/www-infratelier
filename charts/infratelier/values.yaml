@@ -1,0 +1,5 @@
+---
+namespace: "infratelier"
+gitlabdockerconfigjson: "ewoJImF1dGhzIjogewoJCSJyZWdpc3RyeS5naXRsYWIuY29tIjogewoJCQkiYXV0aCI6ICJaMmwwYkdGaUsyUmxjR3h2ZVMxMGIydGxiaTAzTkRjNE5UcDRTRFY0YVhGUVMxZFJOWHBZTlhOaFRFZE5hdz09IgoJCX0KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOC4wOS42IChsaW51eCkiCgl9Cn0="
+cephsecret: 'AQDv9Ndcxyr8EhAAdXEwwzvX3CzcsUfuG9C95w=='
+...

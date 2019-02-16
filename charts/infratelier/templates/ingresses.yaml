@@ -1,0 +1,62 @@
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: httpsredirect
+  namespace: "{{.Values.namespace}}"
+spec:
+  redirectScheme:
+    scheme: https
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http-https-redirect
+  namespace: "{{.Values.namespace}}"
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: "Host(`infratelier.com`)"
+    kind: Rule
+    middlewares:
+    - name: httpsredirect
+    services:
+    - name: backend
+      port: 80
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: app
+  namespace: "{{.Values.namespace}}"
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: "Host(`infratelier.com`) && PathPrefix(`/static`)"
+    kind: Rule
+    middlewares:
+    - name: httpsredirect
+    services:
+    - name: frontend
+      port: 80
+  - match: "Host(`infratelier.com`)"
+    kind: Rule
+    middlewares:
+    - name: httpsredirect
+    services:
+    - name: backend
+      port: 80
+  tls:
+    certResolver: myresolver
+...

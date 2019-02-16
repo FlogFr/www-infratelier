@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
+
+<head>
+{{> part.head.html}}
+</head>
+
+<body>
+    {{> part.nav.header.html}}
+
+    <section class="hero is-medium header-admin">
+        <div class="hero-body m-t-xl">
+            <div class="container content">
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+      <h1 class="button is-primary has-text-classy modal-open" >Voir la liste des inscrits à la newsletter</h1>
+    </section>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Newsletter Subscribers</p>
+            </header>
+            <section class="modal-card-body">
+                <ul>
+                    {{#subscribers}}
+                    <li>{{email}}</li>
+                    {{/subscribers}}
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <section class="section container">
+      {{#messages}}
+      <div class="columns">
+          <div class="column content box">
+              <article class="media">
+                  <div class="media-content">
+                      <div class="content">
+                          <p>
+                          <strong>{{email}}</strong> <small>{{createdAt}} @{{ip}}</small>
+                          <br>
+                          {{message}}
+                          </p>
+                      </div>
+                      <nav class="level is-mobile">
+                          <div class="level-left">
+                              <a class="level-item" href="/admin/message/delete/{{id}}" >
+                                  <span class="button is-warning is-small">Delete</span>
+                              </a>
+                          </div>
+                      </nav>
+                  </div>
+              </article>
+          </div>
+      </div>
+      {{/messages}}
+    </section>
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/index.bundle.js"></script>
+</body>
+</html>

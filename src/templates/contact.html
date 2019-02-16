@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+  xmlns:schema="http://schema.org/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  class="no-js">
+
+<head>
+{{> part.head.html}}
+</head>
+
+<body>
+    {{> part.nav.header.html}}
+
+    <section class="hero is-medium header-contact">
+        <div class="hero-body m-t-xl">
+            <div class="container content" style="min-height: 10rem;">
+                <h1 class="title has-text-classy has-text-white has-text-weight-light is-1">Contact</h1>
+                {{#messages}}
+                <article class="message is-{{level}}">
+                    <div class="message-body">
+                        {{description}}
+                    </div>
+                </article>
+                {{/messages}}
+                <form class="form columns" role="form" action="/contact" method="post">
+                    <div class="secret-input" style="display: none;"></div>
+
+                    <div class="column">
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" name="message" placeholder="We are looking forward to hearing from you…" rows="10" ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped is-grouped-right">
+                            <div class="control">
+                                <input class="input is-medium" type="email" name="email" placeholder="email.adress@gmail.com">
+                            </div>
+                        </div>
+                        <div class="field is-grouped is-grouped-right">
+                            <div class="control">
+                                <button class="button is-medium is-primary" type="submit"><i class="uil uil-check"></i> Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {{> part.footer.html}}
+
+    <script>
+let backendVariables = {{{frontEndVariables}}};
+    </script>
+    <script src="{{staticPath}}/dist/form.bundle.js"></script>
+</body>
+</html>

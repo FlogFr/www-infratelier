@@ -1,0 +1,14 @@
+[Unit]
+Description=Infratelier backend server, listen to :8080
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/haskraft
+User=infratelier
+Group=users
+WorkingDirectory=/home/infratelier
+StandardOutput=syslog
+
+[Install]
+WantedBy=multi-user.target

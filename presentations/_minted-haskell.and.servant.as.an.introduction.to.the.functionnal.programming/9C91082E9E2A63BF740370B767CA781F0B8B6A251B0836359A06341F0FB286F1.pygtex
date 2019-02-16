@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Swagger in one line of code}
+\PYG{k+kt}{BSL8}\PYG{o}{.}\PYG{n}{putStrLn} \PYG{o}{\PYGZdl{}} \PYG{n}{encode} \PYG{o}{\PYGZdl{}} \PYG{n}{toSwagger} \PYG{p}{(}\PYG{k+kt}{Proxy} \PYG{o+ow}{::} \PYG{k+kt}{Proxy} \PYG{k+kt}{UserAPI}\PYG{p}{)}
+  \PYG{o}{\PYGZam{}} \PYG{n}{info}\PYG{o}{.}\PYG{n}{title}        \PYG{o}{.\PYGZti{}} \PYG{l+s}{\PYGZdq{}User API\PYGZdq{}}
+  \PYG{o}{\PYGZam{}} \PYG{n}{info}\PYG{o}{.}\PYG{n}{version}      \PYG{o}{.\PYGZti{}} \PYG{l+s}{\PYGZdq{}1.0\PYGZdq{}}
+  \PYG{o}{\PYGZam{}} \PYG{n}{info}\PYG{o}{.}\PYG{n}{description}  \PYG{o}{?\PYGZti{}} \PYG{l+s}{\PYGZdq{}This is an API for the Users service\PYGZdq{}}
+  \PYG{o}{\PYGZam{}} \PYG{n}{info}\PYG{o}{.}\PYG{n}{license}      \PYG{o}{?\PYGZti{}} \PYG{l+s}{\PYGZdq{}MIT\PYGZdq{}}
+  \PYG{o}{\PYGZam{}} \PYG{n}{host}              \PYG{o}{?\PYGZti{}} \PYG{l+s}{\PYGZdq{}example.com\PYGZdq{}}
+\PYG{k+kt}{:}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

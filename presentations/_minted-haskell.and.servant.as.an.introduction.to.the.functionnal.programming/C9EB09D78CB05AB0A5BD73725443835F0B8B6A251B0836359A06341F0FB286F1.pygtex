@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{class} \PYG{k+kt}{SqlRow} \PYG{n}{a} \PYG{k+kr}{where}
+  \PYG{n}{fromSqlResultRows} \PYG{o+ow}{::} \PYG{k+kt}{Result} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{IO} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]}
+  \PYG{n}{fromSqlResultRows} \PYG{n}{sqlResult} \PYG{o+ow}{=} \PYG{k+kr}{do}
+    \PYG{p}{(}\PYG{k+kt}{Row} \PYG{n}{nbRows}\PYG{p}{)} \PYG{o+ow}{\PYGZlt{}\PYGZhy{}} \PYG{n}{ntuples} \PYG{n}{sqlResult}
+    \PYG{k+kr}{let} \PYG{n}{rows} \PYG{o+ow}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{o}{..}\PYG{p}{(}\PYG{n}{nbRows}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)]}
+    \PYG{n}{mapConcurrently} \PYG{p}{(}\PYG{n+nf}{\PYGZbs{}}\PYG{n}{k} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{fromSqlResultRow} \PYG{n}{sqlResult} \PYG{n}{k}\PYG{p}{)} \PYG{n}{rows}
+\end{Verbatim}

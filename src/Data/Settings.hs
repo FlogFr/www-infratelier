@@ -3,20 +3,19 @@ module Data.Settings where
 
 import Protolude
 import Control.Monad
-import qualified Data.Map.Strict as M hiding (map)
+import qualified Data.HashMap.Strict as HM
 import qualified Data.Text as T
 import qualified Data.Yaml as Y
-import Data.BlogPostEntry
 
 data Settings = Settings
-  { base_url :: T.Text
+  { baseUrl :: T.Text
   , production :: Bool
   , email_debug :: Bool
   , app_port :: Int
-  , blog_entries :: M.Map Text (M.Map Text [BlogPostEntry])
+  , template_default :: HM.HashMap Text Text
+  , monitoring_port :: Int
   } deriving (Show, Generic, Eq)
 
-instance Y.ToJSON Settings
 instance Y.FromJSON Settings
 
 loadSettings :: T.Text -> IO (Settings)

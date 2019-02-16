@@ -1,0 +1,105 @@
+# Now create the pods for the backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: "{{.Values.namespace}}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: registry-gitlab-cred
+      containers:
+        - name: nginx
+          image: "nginx:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 80
+          volumeMounts:
+            - name: backend-nginx-conf
+              mountPath: /etc/nginx/auth.htpasswd
+              subPath: auth.htpasswd
+            - name: backend-nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: backend-nginx-conf
+              mountPath: /etc/nginx/mime.types
+              subPath: mime.types
+        - name: backend
+          image: "registry.gitlab.com/flogfr/infratelier/infratelier-backend:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: backend-web
+              containerPort: 8080
+          volumeMounts:
+            - name: persistent-storage
+              mountPath: /var/infratelier
+      volumes:
+        - name: persistent-storage
+          persistentVolumeClaim:
+            claimName: persistent-storage
+        - name: backend-nginx-conf
+          configMap:
+            name: backend-nginx-conf
+
+---
+
+# Now create the pods for the frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: "{{.Values.namespace}}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      imagePullSecrets:
+        - name: registry-gitlab-cred
+      containers:
+        - name: nginx
+          image: "nginx:latest"
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 80
+          volumeMounts:
+            - name: frontend-nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: frontend-nginx-conf
+              mountPath: /etc/nginx/mime.types
+              subPath: mime.types
+            - name: shared-data
+              mountPath: /var/www
+        - name: frontend
+          image: "registry.gitlab.com/flogfr/infratelier/infratelier-frontend:latest"
+          imagePullPolicy: Always
+          command: ["/bin/bash"]
+          args: ["-c", "cp -fr /var/www/* /var/shared/ ; sleep infinity"]
+          ports:
+            - name: web
+              containerPort: 80
+          volumeMounts:
+            - name: shared-data
+              mountPath: /var/shared
+      volumes:
+        - name: frontend-nginx-conf
+          configMap:
+            name: frontend-nginx-conf
+        - name: shared-data
+          emptyDir: {}

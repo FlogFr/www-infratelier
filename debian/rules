@@ -1,0 +1,24 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	rm -rf debian/infratelier
+	# cabal new-install
+	mkdir -p debian/infratelier/usr/bin
+	# nginx template file
+	mkdir -p debian/infratelier/etc/nginx/conf.d
+	cp -r nginx.conf debian/infratelier/etc/nginx/conf.d/infratelier.com.conf
+	cp -r nginx.htpasswd debian/infratelier/etc/nginx/conf.d/infratelier.com.htpasswd
+	# all the installs files
+	mkdir -p debian/infratelier/home/infratelier
+	cp -r src/templates debian/infratelier/home/infratelier/
+	cp -r www debian/infratelier/home/infratelier/
+	rm -fr debian/infratelier/home/infratelier/www/assets
+	rm -f debian/infratelier/home/infratelier/www/dist
+	cp -r front/dist debian/infratelier/home/infratelier/www/
+	cp -v ./dist-newstyle/build/x86_64-linux/ghc-8.6.1/haskraft-0.1.0.0/x/haskraft/noopt/build/haskraft/haskraft debian/infratelier/usr/bin/

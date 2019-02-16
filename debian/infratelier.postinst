@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+        configure)
+                if ! getent passwd infratelier >/dev/null; then
+                        adduser --system --shell /bin/bash --home /home/infratelier infratelier
+                fi
+        ;;
+esac
+
+chown -R infratelier /home/infratelier

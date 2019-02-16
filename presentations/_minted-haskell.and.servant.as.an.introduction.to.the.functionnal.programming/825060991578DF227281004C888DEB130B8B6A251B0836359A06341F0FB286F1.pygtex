@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kr}{type} \PYG{k+kt}{API} \PYG{o+ow}{=}
+  \PYG{l+s}{\PYGZdq{}static\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{Raw}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{l+s}{\PYGZdq{}blog\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{BlogAPI}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{l+s}{\PYGZdq{}login\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{ServerLoginAPI}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{k+kt}{MonitoringAPI}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{k+kt}{AuthProtect} \PYG{l+s}{\PYGZdq{}custom\PYGZhy{}auth\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{FrontAPI}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{k+kt}{AuthProtect} \PYG{l+s}{\PYGZdq{}custom\PYGZhy{}auth\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{l+s}{\PYGZdq{}api\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{l+s}{\PYGZdq{}v1\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{APIV1}
+  \PYG{k+kt}{:\PYGZlt{}|\PYGZgt{}} \PYG{k+kt}{AuthProtect} \PYG{l+s}{\PYGZdq{}custom\PYGZhy{}auth\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{l+s}{\PYGZdq{}admin\PYGZdq{}} \PYG{k+kt}{:\PYGZgt{}} \PYG{k+kt}{AdminAPI}
+\end{Verbatim}

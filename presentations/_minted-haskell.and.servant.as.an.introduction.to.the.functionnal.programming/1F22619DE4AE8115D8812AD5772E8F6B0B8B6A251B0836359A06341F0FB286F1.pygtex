@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Search: Maybe a \PYGZhy{}\PYGZgt{} Bool}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Results:}
+\PYG{n+nf}{isJust} \PYG{o+ow}{::} \PYG{k+kt}{Maybe} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{k+kt}{Bool}
+\end{Verbatim}

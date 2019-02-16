@@ -1,58 +1,14 @@
 ---
-base_url: "http://localhost:8000"
-production: False
+baseUrl: "http://localhost:8000"
 app_port: 8000
+monitoring_port: 8001
+production: False
 email_debug: True
-blog_entries:
-  "en":
-    "EN Food truck":
-      - template: first-article-food-truck.html
-        slug: first-article-food-truck
-        title: EN First article food truck
-        updated: 2003-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
-    "EN Food bike":
-      - template: second-article-food-bike.html
-        slug: second-article-food-bike
-        title: EN Second article food bike
-        updated: 2012-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
-  "pl":
-    "PL Food truck":
-      - template: first-article-food-truck.html
-        slug: first-article-food-truck
-        title: PL First article food truck
-        updated: 2003-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
-    "PL Food bike":
-      - template: second-article-food-bike.html
-        slug: second-article-food-bike
-        title: PL Second article food bike
-        updated: 2012-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
-  "fr":
-    "Food truck":
-      - template: first-article-food-truck.html
-        slug: first-article-food-truck
-        title: FR First article food truck
-        updated: 2003-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
-    "Food bike":
-      - template: second-article-food-bike.html
-        slug: second-article-food-bike
-        title: FR Second article food bike
-        updated: 2012-12-13T18:30:02Z
-        summary: sum sum sum
-        author_name: Author Name
-        author_email: author@example.com
+template_default:
+  baseUrl: "http://localhost:8000"
+  staticPath: "/static"
+  title: "Infratelier Consultant"
+  description: "Web Consultant, Infrastructure Experts"
+  siteName: "Infratelier Consultant"
+  keywords: "Infratelier Consultant"
 ...

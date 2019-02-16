@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Infratelier Service
+After=docker.service
+Requires=docker.service
+ 
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStart=/usr/bin/docker run --name infratelier -p 8000:8000 -v /etc/infratelier:/var/infratelier -t --rm registry.gitlab.com/flogfr/infratelier/infratelier-backend:latest
+ 
+[Install]
+WantedBy=multi-user.target

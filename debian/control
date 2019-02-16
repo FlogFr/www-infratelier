@@ -1,0 +1,14 @@
+Source: infratelier
+Priority: optional
+Maintainer: Florian Grignon <grignon.florian@gmail.com>
+Build-Depends:
+ debhelper (>= 11~)
+Standards-Version: 0.1.0
+Vcs-Browser: https://github.com/FlogFr/infratelier
+Vcs-Git: https://github.com/FlogFr/infratelier
+Homepage: https://infratelier.com/
+
+Package: infratelier
+Architecture: all
+Depends: ${misc:Depends}, nginx, adduser
+Description: infrAtelier website

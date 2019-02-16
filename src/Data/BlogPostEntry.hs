@@ -8,12 +8,16 @@ import Data.Time
 
 data BlogPostEntry = BlogPostEntry
   { template :: Text
+  , category :: Text
   , slug :: Text
   , title :: Text
   , summary :: Text
   , author_name :: Text
   , author_email :: Text
+  , tags :: [Text]
+  , created :: UTCTime
   , updated :: UTCTime
+  , image :: Text
   } deriving (Show, Generic, Eq)
 
 

@@ -14,7 +14,7 @@ import HandlerM
 
 -- Colors
 primaryColor :: Color
-primaryColor = rgb 152 212 32
+primaryColor = rgb 255 168 0
 
 lightPrimaryColor :: Color
 lightPrimaryColor = lighten 0.5 primaryColor
@@ -56,7 +56,7 @@ greyColor :: Color
 greyColor = rgb 80 80 80
 
 darkGreyColor :: Color
-darkGreyColor = darken 0.5 greyColor
+darkGreyColor = rgb 65 65 65
 
 lightGreyColor :: Color
 lightGreyColor = lighten 0.5 greyColor
@@ -123,56 +123,31 @@ fonts = do
       [ FontFaceSrcUrl "/static/fonts/Courgette.woff2" (Just WOFF2)
       ]
 
-logoCSS :: Css
-logoCSS = do
-  star # byClass "logo-email" ? do
-    logoCSS'
-  star # byClass "logo-reddit" ? do
-    logoCSS'
-  star # byClass "logo-refresh" ? do
-    logoCSS'
-  star # byClass "logo-home" ? do
-    logoCSS'
-  star # byClass "logo-power" ? do
-    logoCSS'
-  star # byClass "logo-atom" ? do
-    logoCSS'
-  star # byClass "logo-facebook" ? do
-    logoCSS'
-  star # byClass "logo-facebook-blue" ? do
-    logoCSS'
-  star # byClass "logo-world" ? do
-    logoCSS'
-  star # byClass "logo-favorite" ? do
-    logoCSS'
-  star # byClass "logo-glasses" ? do
-    logoCSS'
-  star # byClass "logo-instagram" ? do
-    logoCSS'
-  star # byClass "logo-flag-en" ? do
-    logoCSS'
-  star # byClass "logo-flag-fr" ? do
-    logoCSS'
-  star # byClass "logo-flag-pl" ? do
-    logoCSS'
-  star # byClass "logo-delete" ? do
-    logoCSS'
-  star # byClass "logo-locator" ? do
-    logoCSS'
-  star # byClass "logo-document" ? do
-    logoCSS'
-  star # byClass "logo-update" ? do
-    logoCSS'
-  star # byClass "logo-sell" ? do
-    logoCSS'
-  where logoCSS' :: Css
-        logoCSS' = do
+iconCSS :: Css
+iconCSS = do
+  star # byClass "icon-left" ? do
+    iconCSS'
+  star # byClass "icon-right" ? do
+    iconCSS'
+  star # byClass "icon-python" ? do
+    iconCSS'
+  star # byClass "icon-haskell" ? do
+    iconCSS'
+  star # byClass "icon-postgresql" ? do
+    iconCSS'
+  star # byClass "icon-react" ? do
+    iconCSS'
+  star # byClass "icon-elm" ? do
+    iconCSS'
+  where iconCSS' :: Css
+        iconCSS' = do
           position relative
           display inlineBlock
-          backgroundImage (url "/static/images/logos.png")
+          backgroundImage (url "/static/icons.png")
           backgroundSize cover
           verticalAlign middle
           overflow hidden
+          whiteSpace nowrap
           textIndent (indent (pct 100))
 
 fromCarouselAppearIn :: Css
@@ -311,7 +286,7 @@ defaultCSS :: Css
 defaultCSS = do
   defaultFonts
   listCSS
-  logoCSS
+  iconCSS
   tableCSS
   ul ? do
     margin (rem 0) (rem 0) (rem 0) (rem 0)
@@ -328,6 +303,8 @@ defaultCSS = do
     position relative
     top (rem (-3))
     visibility hidden
+  div ? do
+    position relative
 
 containerImgTagCSS :: Css
 containerImgTagCSS = do
@@ -417,27 +394,11 @@ structureCSS :: Css
 structureCSS = do
   body ? do
     display grid
-    background $ rgb 242 242 242
+    background $ rgb 224 224 224
     gridTemplateColumns "1fr"
-    gridTemplateRows "3rem 1rem auto 8rem"
-    gridTemplateAreas "\"header\" \"navigation\" \"main\" \"footer\""
+    gridTemplateRows "3rem auto 8rem"
+    gridTemplateAreas "\"header\" \"main\" \"footer\""
     gridGap (px 0)
-  query Q.screen [Q.minWidth (px 640)] $ do
-    body ? do
-      gridTemplateColumns "3fr 10fr 1fr"
-      gridTemplateRows "3rem auto 3rem"
-      gridTemplateAreas "\"header header header\" \"navigation main rightvoid\" \"footer footer footer\""
-
-
-backgroundMainCSS :: Css
-backgroundMainCSS = do
-  div # byClass "background-main" ? do
-    zIndex (-100)
-    position absolute
-    backgroundSize cover
-    backgroundImage (url "/static/Background.Wood.Coffee.jpg")
-    width (pct 100)
-    height (rem 36)
 
 eventsCss :: Css
 eventsCss = do
@@ -670,76 +631,6 @@ contactCSS = do
           width (rem 2)
           backgroundPosition (positioned (rem 0) (rem 0))
 
-fullscreenMenuCSS :: Css
-fullscreenMenuCSS = do
-  div # byClass "fullscreen-menu" ? do
-    position fixed
-    visibility hidden
-    zIndex 500
-    width (pct 100)
-    height (pct 100)
-    background primaryColor
-    ul ? do
-      margin (rem 8) (rem 0) (rem 0) (rem 0)
-      padding (rem 0) (rem 0) (rem 0) (rem 0)
-      listStyleType none
-      a ? do
-        textTransform capitalize
-        color white
-        lineHeight (rem 8)
-        fontFamily ["Roboto"] [sansSerif]
-        li ? do
-          display block
-          position relative
-          width (pct 100)
-          textAlign center
-          fontSize (rem 2)
-          query Q.screen [Q.minWidth (px 640)] $ do
-            fontSize (rem 3)
-          lineHeight (rem 8)
-          span # byClass "logo-facebook-blue" ? do
-            height (rem 4)
-            width (rem 4)
-            backgroundPosition (positioned (rem (-24)) (rem 0))
-          span # byClass "logo-email" ? do
-            height (rem 4)
-            width (rem 4)
-            backgroundPosition (positioned (rem 0) (rem 0))
-        form ? do
-          input # ("type" @= "submit") ? do
-            key "background" (Value "none")
-            key "border" (Value "none")
-            color white
-            fontSize (rem 2)
-            query Q.screen [Q.minWidth (px 640)] $ do
-              fontSize (rem 3)
-            lineHeight (rem 8)
-            fontFamily ["Roboto"] [sansSerif]
-          input # ("type" @= "submit") ? do
-            cursor pointer
-    a # byClass "container-close" ? do
-      display block
-      position absolute
-      top (rem 1)
-      right (rem 2)
-      width (rem 2.5)
-      height (rem 2)
-      span # byClass "close-button" ? do
-        position absolute
-        width (pct 100)
-        height (px 4)
-        top (pct 50)
-        transform $ rotate (deg (-45))
-        background darkPrimaryColor
-      span # byClass "close-button" # after ? do
-        position absolute
-        transform $ rotate (deg 90)
-        content $ stringContent " "
-        width (pct 100)
-        height (px 4)
-        background darkPrimaryColor
-        top (pct 50)
-
 facebookLoginP :: Css
 facebookLoginP = do
   p # byClass "facebook-login" ? do
@@ -869,20 +760,122 @@ mainPartHeatmapCSS = do
       width (pct 100)
       height (pct 100)
 
+processCSS :: Css
+processCSS = do
+  display block
+  width (px 800)
+  height (px 640)
+  background red
+
+
+methodContainerCSS :: Css
+methodContainerCSS = do
+  div # byClass "method-container" ? do
+    position relative
+    display block
+    width (px 800)
+    height (px 640)
+    backgroundImage (url "/static/process.wave.png")
+    backgroundSize cover
+    span # byClass "icon-left" ? do
+      display block
+      position absolute
+      top (px 250)
+      left (px 0)
+      height (rem 2)
+      width (rem 2)
+      backgroundPosition (positioned (rem 0) (rem 0))
+    span # byClass "icon-right" ? do
+      display block
+      position absolute
+      top (px 250)
+      right (px 0)
+      height (rem 2)
+      width (rem 2)
+      backgroundPosition (positioned (rem (-2)) (rem 0))
+    div # byId "explanation-container" ? do
+      position absolute
+      top (px 120)
+      left (px 250)
+      height (rem 3)
+      width (rem 20)
+      background white
+    div # byClass "method-button" ? do
+      position absolute
+      background white
+      borderRadius (px 15) (px 15) (px 15) (px 15)
+      height (px 15)
+      width (px 15)
+    div # byId "method-button-step-1" ? do
+      left (px 65)
+      top (px 475)
+    div # byId "method-button-step-2" ? do
+      left (px 213)
+      top (px 312)
+    div # byId "method-button-step-3" ? do
+      left (px 340)
+      top (px 433)
+    div # byId "method-button-step-4" ? do
+      left (px 579)
+      top (px 323)
+    div # byId "method-button-step-5" ? do
+      left (px 719)
+      top (px 160)
+
+mainPartTechnologiesCSS :: Css
+mainPartTechnologiesCSS = do
+  span # byClass "icon-python" ? do
+    height (rem 2)
+    width (rem 2)
+    backgroundPosition (positioned (rem (-14)) (rem 0))
+  span # byClass "icon-haskell" ? do
+    height (rem 2)
+    width (rem 4)
+    backgroundPosition (positioned (rem (-10)) (rem 0))
+  span # byClass "icon-postgresql" ? do
+    height (rem 2)
+    width (rem 2)
+    backgroundPosition (positioned (rem (-4)) (rem 0))
+  span # byClass "icon-elm" ? do
+    height (rem 2)
+    width (rem 2)
+    backgroundPosition (positioned (rem (-6)) (rem 0))
+  span # byClass "icon-react" ? do
+    height (rem 2)
+    width (rem 2)
+    backgroundPosition (positioned (rem (-8)) (rem 0))
+
+mainPartCSS :: Css
+mainPartCSS = do
+  div # byClass "main-part" ? do
+    display grid
+    gridTemplateColumns "1fr 3fr 1fr"
+    gridTemplateRows "auto"
+    gridTemplateAreas "\"leftvoid main-part rightvoid\""
+    gridGap (px 0)
+    div # byClass "main-part-article" ? do
+      position relative
+      gridArea "main-part"
+      -- all specific css for the main parts
+      methodContainerCSS
+      mainPartTechnologiesCSS
+  div # byClass "main-part-process" ? do
+    background primaryColor
+
 mainCSS :: Css
 mainCSS = do
-  backgroundMainCSS
-  fullscreenMenuCSS
-  formCSS
   div # byClass "main" ? do
     overflow hidden
     gridArea "main"
     position relative
     width (pct 100)
-    minHeight (rem 30)
+    minHeight (rem 40)
     height (pct 100)
     zIndex 100
     popupCSS
+    mainPartCSS
+    div # byClass "process-container" ? do
+      processCSS
     a # byId "aRefreshMapArea" ? do
       top (rem 1)
       right (rem 1)
@@ -897,11 +890,6 @@ mainCSS = do
         backgroundPosition (positioned (rem (-4)) (rem 0))
       span ? do
         fontSize (rem 0.6)
-    div # byClass "main-part" ? do
-      p ? do
-        a ? do
-          fontWeight bold
-      facebookLoginP
     div # byClass "main-part-submenu" ? do
       subMenuCSS
     div # byClass "main-part-testimonial" ? do
@@ -1001,214 +989,49 @@ diaporamaCSS = do
   div # byClass "container-diaporama" ? do
     textAlign justify
 
-headerCSS :: Bool -> Bool -> Css
-headerCSS pro negative = do
+headerCSS :: Css
+headerCSS = do
   header ? do
     gridArea "header"
     position fixed
     width (pct 100)
     height (rem 3)
     zIndex 200
-    background (if negative then darkGreyColor else white)
-    boxShadow . pure $ bsInset . bsColor (if pro then lightSecondaryColor else lightPrimaryColor) $ shadow (rem 0) (rem (0.15))
-    div # byClass "logo" ? do
+    background darkGreyColor
+    boxShadow . pure $ bsInset . bsColor lightPrimaryColor $ shadow (rem 0) (rem (0.15))
+    div ? do
       position relative
-      height (pct 100)
       display inlineBlock
-      marginLeft (rem 1)
-      img # byClass "img-logo" ? do
-        height (rem 4)
-        width (rem 3)
-        marginTop (rem 0.2)
-      ".logo-text" ? do
-        display none
+      img ? do
         position relative
-        verticalAlign vAlignTop
-        query Q.screen [Q.minWidth (px 640)] $ do
-          display inlineBlock
-        h1 ? do
-          color (if negative then primaryColor else darkGreyColor)
-          display inlineBlock
-          fontSize (rem 1)
-          lineHeight (rem 3)
-          fontFamily ["Futura"] [sansSerif]
-          padding (rem 0) (rem 0) (rem 0) (rem 0)
-          margin (rem 0) (rem 0) (rem 0) (rem 0)
-        h1 # byClass "logo-text-dot-tld" ? do
-          fontFamily ["SansForgetica"] [sansSerif]
-          fontSize (rem 0.5)
-    nav # byClass "top-nav-categories" ? do
-      position absolute
+        display inlineBlock
+        top (rem 0.2)
+        left (rem 1)
+        width (rem 4)
+        height (rem 2.8)
+    nav ? do
+      position relative
       display inlineBlock
       verticalAlign vAlignTop
-      right (rem 7)
+      height (pct 100)
+      left (rem 5)
       ul ? do
         display inlineBlock
-        listStyleType none
-        verticalAlign vAlignTop
-        padding (rem 0) (rem 0) (rem 0) (rem 0)
-        margin (rem 0) (rem 0) (rem 0) (rem 0)
-        bottom (rem 0)
-        left (rem 0)
-        li # hover ? do
-          cursor pointer
-          color primaryColor
-        li # byClass "category-active" |> a ? do
-          fontWeight bold
-          color primaryColor
-        li ? do
-          display inlineBlock
-          fontFamily ["Roboto"] [sansSerif]
-          fontSize (rem 0.7)
-          lineHeight (rem 3)
-          color greyColor
-          padding (rem 0) (rem 0.2) (rem 0) (rem 0.2)
-          query Q.screen [Q.minWidth (px 640)] $ do
+        a # hover ? do
+          li ? do
+            background lightPrimaryColor
+            color black
+        a ? do
+          li ? do
+            display inlineBlock
+            height (pct 100)
             padding (rem 0) (rem 0.5) (rem 0) (rem 0.5)
-          textTransform capitalize
-          span # byClass "logo-flag-pl" ? do
-            height (rem 1)
-            width (rem 2)
-            backgroundPosition (positioned (rem (-12)) (rem 0))
-          span # byClass "logo-flag-en" ? do
-            height (rem 1)
-            width (rem 2)
-            backgroundPosition (positioned (rem (-14)) (rem 0))
-          span # byClass "logo-flag-fr" ? do
-            height (rem 1)
-            width (rem 2)
-            backgroundPosition (positioned (rem (-16)) (rem 0))
-          a ? do
-            color (if negative then lightGreyColor else blackColor)
-            fontFamily ["Roboto"] [sansSerif]
             fontWeight normal
-            display none
-            query Q.screen [Q.minWidth (px 640)] $ do
-              display inlineBlock
-            img ? do
-              height (rem 1.5)
-              verticalAlign middle
-            span # byClass "logo-atom" ? do
-              height (rem 2)
-              width (rem 2)
-              backgroundPosition (positioned (rem (-10)) (rem 0))
-      ul # byClass "toggle-my-haskraft-list"  ? do
-        li ? do
-          display block
-          padding (rem 0.3) (rem 0) (rem 0) (rem 0)
-          lineHeight (rem 1)
-          textAlign center
-    nav # byClass "top-nav-login" ? do
-      position absolute
-      display inlineBlock
-      verticalAlign vAlignTop
-      top (rem 0)
-      right (rem 0.5)
-      a # byClass "container-lines" # hover ? do
-        background lightLightGreyColor
-      a # byClass "container-lines" ? do
-        display inlineBlock
-        position relative
-        width (rem 2)
-        height (rem 1.5)
-        span # byClass "lines" ? do
-          content $ stringContent " "
-          display block
-          position absolute
-          width (pct 100)
-          height (px 4)
-          top (pct 50)
-          background (if pro then darkSecondaryColor else darkPrimaryColor)
-        span # byClass "lines" # after ? do
-          position absolute
-          content $ stringContent " "
-          width (pct 100)
-          height (px 4)
-          background (if pro then darkSecondaryColor else darkPrimaryColor)
-          top (px 10)
-          left (px 0)
-        span # byClass "lines" # before ? do
-          position absolute
-          content $ stringContent " "
-          width (pct 100)
-          height (px 4)
-          background (if pro then darkSecondaryColor else darkPrimaryColor)
-          top (px (-10))
-          left (px 0)
-      ul ? do
-        listStyleType none
-        margin (rem 0) (rem 0) (rem 0) (rem 0)
-        li ? do
-          lineHeight (rem 2)
-          width (rem 8)
-          textAlign end
-          query Q.screen [Q.minWidth (px 640)] $ do
+            fontSize (rem 0.8)
             lineHeight (rem 3)
-          span # byClass "logo-power" ? do
-            height (rem 2)
-            width (rem 2)
-            backgroundPosition (positioned (rem (-8)) (rem 0))
-          a ? do
             verticalAlign middle
-            fontWeight bold
-            display block
-            fontFamily ["Roboto"] [sansSerif]
-            fontSize (rem 0.5)
-            color primaryColor
-            textTransform capitalize
-            query Q.screen [Q.minWidth (px 640)] $ do
-              fontSize (rem 1)
-          a # byClass "login-fb-button" ? do
-            color facebookBlueColor
-          ul # byClass "login-submenu" ? do
-            display none
-            background white
-            span # byClass "logo-email" ? do
-              height (rem 2)
-              width (rem 2)
-              backgroundPosition (positioned (rem 0) (rem 0))
-            span # byClass "logo-facebook-blue" ? do
-              height (rem 2)
-              width (rem 2)
-              backgroundPosition (positioned (rem (-12)) (rem 0))
-      ul # hover ? do
-        ul # byClass "login-submenu" ? do
-          display block
-    nav # byClass "top-nav-user" ? do
-      display inlineBlock
-      verticalAlign vAlignTop
-      height (pct 100)
-      bottom (rem 0)
-      marginLeft (rem 1)
-    nav # byClass "top-nav-user" |> ul ? do
-      padding (rem 0) (rem 0) (rem 0) (rem 0)
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-      borderLeft solid (rem 0.1) greyColor
-      listStyleType none
-      background whiteColor
-    nav # byClass "top-nav-user" |> ul |> li ? do
-      fontFamily ["Roboto"] [sansSerif]
-      fontSize (rem 1.0)
-      lineHeight (rem 4)
-      color greyColor
-      padding (rem 0) (rem 0.5) (rem 0) (rem 0.5)
-      textTransform capitalize
-      ul |> li ? do
-        lineHeight (rem 2)
-    nav # byClass "top-nav-user" ** button ? do
-      fontFamily ["Roboto"] [sansSerif]
-      fontSize (rem 1.0)
-      lineHeight (rem 2)
-      color greyColor
-      padding (rem 0) (rem 0.5) (rem 0) (rem 0.5)
-      textTransform capitalize
-    nav # byClass "top-nav-user" # hover ** ul # byClass "top-nav-user-submenu" ? do
-      display block
-    nav # byClass "top-nav-user" ** ul # byClass "top-nav-user-submenu" ? do
-      padding (rem 0) (rem 0) (rem 0) (rem 0)
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-      listStyleType none
-      display none
+            color white
+
 
 carouselCSS :: Css
 carouselCSS = do
@@ -1238,15 +1061,15 @@ carouselCSS = do
   div # byClass "container-carousel" |> div # nthChild "4" ? do
     animationDelay (sec 30)
 
-footerCSS :: Bool -> Css
-footerCSS negative = do
-  div # byClass "footer" ? do
+footerCSS :: Css
+footerCSS = do
+  footer ? do
     gridArea  "footer"
     overflow hidden
     zIndex 100
     position relative
-    background (if negative then blackColor else primaryColor)
-    boxShadow . pure $ bsInset . bsColor greyColor $ shadow (rem 0) (rem (0.1))
+    background darkGreyColor
+    boxShadow . pure $ bsInset . bsColor lightPrimaryColor $ shadow (rem 0) (rem (-0.15))
     h3 ? do
       display inlineBlock
       position absolute
@@ -1263,7 +1086,7 @@ footerCSS negative = do
           fontFamily ["Roboto"] [sansSerif]
           fontSize (rem 0.8)
           paddingLeft (rem 2)
-          color (if negative then primaryColor else darkGreyColor)
+          color darkGreyColor
           span ? do
             display none
             query Q.screen [Q.minWidth (px 640)] $ do
@@ -1309,8 +1132,8 @@ messagesCSS = do
         listStyleType none
         color greyColor
 
-haskraftCSS :: Bool -> Css
-haskraftCSS pro = do
+haskraftCSS :: Css
+haskraftCSS = do
   element ":root" ? do
     fontSize (pct 125)
     h1 ? do
@@ -1329,7 +1152,7 @@ haskraftCSS pro = do
     containerImgTagCSS
     containerImgProfileCSS
     structureCSS
-    headerCSS pro False
+    headerCSS
     navigationCSS
     messagesCSS
     mainCSS
@@ -1338,49 +1161,18 @@ haskraftCSS pro = do
     carouselCSS
     maccaronCss
     wheelCss
-    footerCSS False
+    footerCSS
 
-haskraftBlogCSS :: Css
-haskraftBlogCSS = do
-  element ":root" ? do
-    fontSize (pct 125)
-    h1 ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    h2 ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    h3 ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    h4 ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    p ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    span ? do
-      margin (rem 0) (rem 0) (rem 0) (rem 0)
-    defaultCSS
-    containerImgTagCSS
-    containerImgProfileCSS
-    structureCSS
-    headerCSS False True
-    navigationCSS
-    mainCSS
-    mainBlogCSS
-    mapCSS
-    diaporamaCSS
-    carouselCSS
-    maccaronCss
-    footerCSS True
-
-haskraftBlogCSSText :: HandlerM Text
-haskraftBlogCSSText = do
+haskraftCSSText :: HandlerM Text
+haskraftCSSText = do
   sharedEnv <- ask
   case production . settings $ sharedEnv of
     True -> do
-      -- production
       let tCache = cache sharedEnv
 
       cache' <- liftIO $ atomically $ readTMVar tCache
 
-      let cacheKey = "CSS-blog"
+      let cacheKey = "CSS-main"
 
       let mCacheValue = lookup cacheKey cache'
 
@@ -1393,42 +1185,7 @@ haskraftBlogCSSText = do
           let cssTxt = renderWith compact [] $ do
                          fonts
                          visibleAnimations
-                         haskraftBlogCSS
-
-          let newCache = insert cacheKey (encodeUtf8 . toStrict $ cssTxt) cache'
-          _ <- liftIO $ atomically $ swapTMVar tCache newCache
-          return $ (toStrict cssTxt)
-
-    False -> return $ toStrict $ renderWith compact [] $ do
-                                   fonts
-                                   visibleAnimations
-                                   haskraftBlogCSS
-
-haskraftCSSText' :: Bool -> HandlerM Text
-haskraftCSSText' pro = do
-  sharedEnv <- ask
-  case production . settings $ sharedEnv of
-    True -> do
-      let tCache = cache sharedEnv
-
-      cache' <- liftIO $ atomically $ readTMVar tCache
-
-      let cacheKey = if pro
-                       then "CSS-main"
-                       else "CSS-main-pro"
-
-      let mCacheValue = lookup cacheKey cache'
-
-      case mCacheValue of
-        -- if the key exists in the cache', return it
-        Just cacheValue -> return $ decodeUtf8 cacheValue
-        -- if the key doesnt exists, "compile" the CSS
-        -- save it in the cache, and return the content
-        Nothing -> do
-          let cssTxt = renderWith compact [] $ do
-                         fonts
-                         visibleAnimations
-                         haskraftCSS pro
+                         haskraftCSS
 
           let newCache = insert cacheKey (encodeUtf8 . toStrict $ cssTxt) cache'
           _ <- liftIO $ atomically $ swapTMVar tCache newCache
@@ -1437,7 +1194,4 @@ haskraftCSSText' pro = do
     False -> return $ toStrict $ renderWith pretty [] $ do
                                    fonts
                                    visibleAnimations
-                                   haskraftCSS pro
-
-haskraftCSSText :: HandlerM Text
-haskraftCSSText = haskraftCSSText' False
+                                   haskraftCSS

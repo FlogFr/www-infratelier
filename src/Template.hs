@@ -6,6 +6,7 @@ import Data.HashMap.Strict
 import Control.Concurrent.STM.TMVar
 import Control.Exception
 import Text.Mustache
+import Text.Mustache.Types
 import Text.Blaze.Html
 import SharedEnv
 import Data.Settings
@@ -18,7 +19,7 @@ instance Exception LCException
 
 compileTemplate' :: FilePath -> IO Template
 compileTemplate' templateName = do
-    let searchSpace = ["src/templates/", "emails/"]
+    let searchSpace = ["src/templates/", "templates/", "emails/"]
     compiled <- automaticCompile searchSpace templateName
     case compiled of
       Left err -> do
@@ -52,10 +53,17 @@ compileTemplate templateName = do
     False -> liftIO $ compileTemplate' templateName
 
 
--- substituteTemplate template context = substitute template (object ["ctx" ~= context])
-substituteTemplate :: ToMustache ctx => Template -> ctx -> Text
-substituteTemplate template context = substitute template context
+substituteToTextTemplate :: Template -> HashMap Text Value -> HandlerM Text
+substituteToTextTemplate template additionalContext = do
+  sharedEnv <- ask
+  let defaultContext' = (String) <$> (template_default . settings $ sharedEnv)
+  let mergedContext = union additionalContext defaultContext'
+  return $ substitute template mergedContext
 
-preEscapedToMarkupSubstituteTemplate :: ToMustache ctx => Template -> ctx -> HandlerM Html
-preEscapedToMarkupSubstituteTemplate template context = do
-  return $ preEscapedToMarkup $ substitute template context
+
+preEscapedToMarkupSubstituteTemplate :: Template -> HashMap Text Value -> HandlerM Html
+preEscapedToMarkupSubstituteTemplate template additionalContext = do
+  sharedEnv <- ask
+  let defaultContext' = (String) <$> (template_default . settings $ sharedEnv)
+  let mergedContext = union additionalContext defaultContext'
+  return $ preEscapedToMarkup $ substitute template mergedContext

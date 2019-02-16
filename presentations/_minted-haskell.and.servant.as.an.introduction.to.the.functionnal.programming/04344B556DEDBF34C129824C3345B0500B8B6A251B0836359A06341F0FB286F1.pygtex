@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} example 1 (Monad)}
+\PYG{k+kr}{type} \PYG{k+kt}{HandlerM} \PYG{o+ow}{=} \PYG{k+kt}{ReaderT} \PYG{k+kt}{SharedEnv} \PYG{p}{(}\PYG{k+kt}{LoggingT} \PYG{k+kt}{Handler}\PYG{p}{)}
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} userLoggedInOrRedirect :: Session \PYGZhy{}\PYGZgt{} HandlerM ()}
+
+\PYG{c+c1}{\PYGZhy{}\PYGZhy{} example 2 (TypeClass)}
+\PYG{n+nf}{foldr} \PYG{o+ow}{::} \PYG{k+kt}{Foldable} \PYG{n}{t} \PYG{o+ow}{=\PYGZgt{}} \PYG{p}{(}\PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}\PYG{p}{)} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{t} \PYG{n}{a} \PYG{o+ow}{\PYGZhy{}\PYGZgt{}} \PYG{n}{b}
+\end{Verbatim}
