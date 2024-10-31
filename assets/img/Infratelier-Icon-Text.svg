@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="167"
+   height="49"
+   viewBox="0 0 44.185415 12.964583"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="Infratelier-Icon-Text.svg"
+   inkscape:export-filename="Infratelier-Icon-Text.png"
+   inkscape:export-xdpi="145.14285"
+   inkscape:export-ydpi="145.14285"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.6482717"
+     inkscape:cx="89.710763"
+     inkscape:cy="16.027463"
+     inkscape:window-width="1918"
+     inkscape:window-height="1150"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3814">
+      <stop
+         style="stop-color:#00a2be;stop-opacity:1;"
+         offset="0"
+         id="stop3810" />
+      <stop
+         style="stop-color:#ffb607;stop-opacity:1;"
+         offset="0.40000001"
+         id="stop3979" />
+      <stop
+         style="stop-color:#ffb607;stop-opacity:1;"
+         offset="0.60000002"
+         id="stop4003" />
+      <stop
+         style="stop-color:#00be13;stop-opacity:1;"
+         offset="1"
+         id="stop3820" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3814"
+       id="linearGradient3816"
+       x1="51.787716"
+       y1="142.14259"
+       x2="278.37674"
+       y2="142.14259"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.04555044,0,0,0.04555044,14.647599,-0.29396194)" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;fill-opacity:1;stroke:url(#linearGradient3816);stroke-width:1.20519;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 17.029325,10.703272 5.137837,-9.0451663 5.137843,9.0451663 z"
+       id="path837"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:6.35px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O Bold';text-align:center;text-anchor:middle;fill:none;fill-opacity:1;stroke:#5f8e96;stroke-width:26.4583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="9.8388214"
+       y="11.122398"
+       id="text4140"><tspan
+         sodipodi:role="line"
+         id="tspan4138"
+         style="fill:#00a2be;fill-opacity:1;stroke:none;stroke-width:26.4583;stroke-opacity:1"
+         x="9.8388214"
+         y="11.122398">infr</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:6.35px;font-family:'Linux Libertine O';-inkscape-font-specification:'Linux Libertine O Bold';text-align:center;text-anchor:middle;fill:none;fill-opacity:1;stroke:#5f8e96;stroke-width:26.4583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="35.935249"
+       y="11.122398"
+       id="text4296"><tspan
+         sodipodi:role="line"
+         id="tspan4294"
+         style="fill:#00be13;fill-opacity:1;stroke:none;stroke-width:26.4583;stroke-opacity:1"
+         x="35.935249"
+         y="11.122398">telier</tspan></text>
+  </g>
+</svg>
