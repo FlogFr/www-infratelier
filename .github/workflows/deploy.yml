@@ -1,0 +1,47 @@
+name: Build and deploy
+
+# Every push to main builds the site with production settings, runs the
+# quality checks and publishes output/ to the gh-pages branch, which GitHub
+# Pages serves at https://infratelier.com. Pull requests only build + check.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build (production settings) and check
+        run: make check
+
+      - name: Publish to gh-pages
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Start from the current gh-pages tip so the push is a fast-forward.
+          git fetch --depth=1 origin gh-pages:gh-pages || true
+          ghp-import --no-jekyll --push --branch gh-pages \
+            --message "Publish site from ${GITHUB_SHA::7}" output
