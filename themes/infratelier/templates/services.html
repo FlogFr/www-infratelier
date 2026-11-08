@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% set seo_kind = "services" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% from "partials/macros.html" import icon, breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <p class="eyebrow">Accompagnement</p>
+    <h1>{{ page.heading or page.title }}</h1>
+    <div class="lead">{{ page.content|safe|fr }}</div>
+    <div class="btn-row" style="margin-top:24px">
+      <a class="btn btn-primary" href="{{ SITEURL }}/contact/">Parlons de votre infrastructure {{ icon("arrow", "icon-arrow") }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="domaines-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Domaines d'intervention</p>
+      <h2 id="domaines-titre">Ce que je peux faire pour vous</h2>
+      <p>{{ "Une mission peut couvrir un seul de ces sujets ou les combiner : nous définissons ensemble le périmètre qui a du sens pour vous."|fr }}</p>
+    </div>
+    <div class="grid grid-3">
+      {% for s in SERVICES %}
+      <article class="card service" id="{{ s.id }}">
+        <h3><span class="num">{{ "%02d"|format(loop.index) }}</span>{{ s.title }}</h3>
+        <p>{{ s.text|fr }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="methode-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Méthode</p>
+      <h2 id="methode-titre">Un artisan, de A à Z</h2>
+      <p>{{ "Pas de solution toute faite ni de sous-traitance en cascade : je m'occupe de votre projet de bout en bout, et je vous rends autonomes."|fr }}</p>
+    </div>
+    <ol class="steps">
+      {% for step in PROCESS_STEPS %}
+      <li>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.text|fr }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="criteres-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Vos critères</p>
+      <h2 id="criteres-titre">Vous fixez les priorités</h2>
+      <p>{{ "Chaque entreprise place le curseur différemment. Je conçois l'infrastructure à partir de ce qui compte pour vous."|fr }}</p>
+    </div>
+    <div class="criteria">
+      {% for title, text in CRITERIA %}
+      <div class="criterion">
+        <h3>{{ title }}</h3>
+        <p>{{ text|fr }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="avis-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Retours clients</p>
+      <h2 id="avis-titre">Ils en parlent mieux que moi</h2>
+    </div>
+    {% include "partials/testimonials.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {% set cta_title = "Votre infrastructure mérite du sur-mesure" %}
+    {% set cta_text = "Décrivez-moi votre contexte, vos difficultés et vos objectifs : nous verrons ensemble comment avancer." %}
+    {% include "partials/cta.html" %}
+  </div>
+</section>
+{% endblock %}

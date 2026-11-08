@@ -1,0 +1,10 @@
+{% from "partials/macros.html" import icon with context %}
+<div class="cta-band">
+  <div>
+    <h2>{{ (cta_title if cta_title is defined else "Un projet d'infrastructure, une formation à organiser ?")|fr }}</h2>
+    <p>{{ (cta_text if cta_text is defined else "Racontez-moi votre contexte et vos objectifs. Je vous réponds personnellement, avec une proposition adaptée.")|fr }}</p>
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-primary" href="{{ SITEURL }}/contact/">Parlons-en {{ icon("arrow", "icon-arrow") }}</a>
+  </div>
+</div>

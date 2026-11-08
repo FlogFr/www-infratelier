@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set seo_kind = "contact" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% from "partials/macros.html" import icon, breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <p class="eyebrow">Contact</p>
+    <h1>{{ page.heading or page.title }}</h1>
+    {% if page.lead %}<p class="lead">{{ page.lead|fr }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <div class="card contact-card">
+        <p class="eyebrow">Par e-mail</p>
+        <a class="contact-email" href="mailto:{{ BUSINESS.email }}?subject={{ 'Prise de contact depuis infratelier.com'|urlencode }}">{{ BUSINESS.email }}</a>
+        <div class="prose">{{ page.content|safe|fr }}</div>
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn-primary" href="mailto:{{ BUSINESS.email }}?subject={{ 'Formation'|urlencode }}">{{ icon("school") }} Demander une formation</a>
+          <a class="btn btn-ghost" href="mailto:{{ BUSINESS.email }}?subject={{ 'Accompagnement infrastructure'|urlencode }}">{{ icon("tools") }} Parler d'un projet</a>
+        </div>
+      </div>
+    </div>
+    <aside>
+      <ul class="facts mt-0">
+        <li><strong>{{ BUSINESS.legal_name }}</strong>{{ BUSINESS.locality }} ({{ BUSINESS.postal_code[:2] }}), {{ BUSINESS.country_name }}</li>
+        <li><strong>Zone d'intervention</strong>Partout en France, sur site ou à distance</li>
+        <li><strong>Le livre</strong><a href="{{ BOOK.url }}{{ BOOK.utm_section }}">{{ BOOK.title }}</a></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+{% endblock %}

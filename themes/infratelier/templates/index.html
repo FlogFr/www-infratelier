@@ -1,0 +1,37 @@
+{# Blog listing, generated at /blog/ (INDEX_SAVE_AS). Not indexed while empty. #}
+{% extends "base.html" %}
+{% set seo_title = "Blog : infrastructure, Cloud, Kubernetes et Linux | " ~ SITENAME %}
+{% set seo_description = "Articles de Florian Grignon sur l'infrastructure informatique, le Cloud, Kubernetes et Linux : retours d'expérience et bonnes pratiques." %}
+{% set seo_path = INDEX_URL %}
+{% set seo_kind = "blog" %}
+{% set seo_crumbs = [("Blog", INDEX_URL)] %}
+{% if not articles %}{% set seo_robots = "noindex, follow" %}{% endif %}
+{% from "partials/macros.html" import breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([("Blog", INDEX_URL)]) }}
+    <p class="eyebrow">Blog</p>
+    <h1>Notes d'atelier</h1>
+    <p class="lead">{{ "Retours d'expérience et bonnes pratiques autour de l'infrastructure, du Cloud, de Kubernetes et de Linux."|fr }}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container container-narrow">
+    {% if articles %}
+    <ul class="post-list">
+      {% for a in articles %}
+      <li class="card">
+        <h2 class="mb-0" style="font-size:var(--step-2)"><a href="{{ SITEURL }}/{{ a.url }}">{{ a.title|fr }}</a></h2>
+        <p class="post-meta"><time datetime="{{ a.date.isoformat() }}">{{ a.locale_date }}</time></p>
+        {% if a.summary %}<div class="muted">{{ a.summary|safe|fr }}</div>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">{{ "Les premiers articles arrivent bientôt."|fr }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

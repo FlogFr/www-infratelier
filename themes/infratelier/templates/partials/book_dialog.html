@@ -1,0 +1,21 @@
+{# Welcome dialog promoting the Kubernetes book. Opened by theme/js/site.js. #}
+<dialog id="book-dialog" class="book-dialog" aria-labelledby="book-dialog-title" aria-describedby="book-dialog-desc">
+  <button class="dialog-close" type="button" data-dialog-close aria-label="Fermer">{{ icon("close") }}</button>
+  <div class="book-dialog-inner">
+    <div class="book-dialog-visual">
+      <img src="{{ SITEURL }}{{ BOOK.cover }}" alt="Couverture du livre {{ BOOK.title }}, {{ BOOK.edition }}, par Florian Grignon" width="{{ BOOK.cover_width }}" height="{{ BOOK.cover_height }}" loading="lazy" decoding="async">
+    </div>
+    <div class="book-dialog-body">
+      <div class="book-dialog-head">
+        <img class="book-dialog-thumb" src="{{ SITEURL }}{{ BOOK.cover }}" alt="" width="{{ BOOK.cover_width }}" height="{{ BOOK.cover_height }}" loading="lazy" decoding="async">
+        <p class="eyebrow">{{ "Kubernetes vous intéresse ?"|fr }}</p>
+        <h2 id="book-dialog-title">J’ai écrit <em class="accent">The Art of Kubernetes</em></h2>
+      </div>
+      <p id="book-dialog-desc">{{ BOOK.pitch|fr }} Écrit en français, auto-publié.</p>
+      <div class="btn-row">
+        <a class="btn btn-dark" href="{{ BOOK.url }}{{ BOOK.utm_dialog }}" data-dialog-cta>Découvrir le livre {{ icon("arrow", "icon-arrow") }}</a>
+        <button class="btn btn-ghost" type="button" data-dialog-close>Continuer sur le site</button>
+      </div>
+    </div>
+  </div>
+</dialog>

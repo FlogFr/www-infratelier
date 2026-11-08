@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% set seo_kind = "article" %}
+{% set seo_crumbs = [("Blog", INDEX_URL), (article.title, article.url)] %}
+{% set seo_published = article.date.isoformat() %}
+{% set seo_modified = (article.modified or article.date).isoformat() %}
+{% if article.status == "draft" %}{% set seo_robots = "noindex, nofollow" %}{% endif %}
+{% from "partials/macros.html" import breadcrumb with context %}
+
+{% block content %}
+<article>
+  <header class="page-hero">
+    <div class="container container-narrow">
+      {{ breadcrumb([("Blog", INDEX_URL), (article.title, article.url)]) }}
+      <h1>{{ article.title|fr }}</h1>
+      <p class="post-meta">
+        Par {{ article.author }} · <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+        {% if article.modified %} · mis à jour le <time datetime="{{ article.modified.isoformat() }}">{{ article.locale_modified }}</time>{% endif %}
+      </p>
+    </div>
+  </header>
+  <div class="section">
+    <div class="container container-narrow">
+      <div class="prose">{{ article.content|safe|fr }}</div>
+    </div>
+  </div>
+</article>
+
+<section class="section section-alt">
+  <div class="container">
+    {% include "partials/cta.html" %}
+  </div>
+</section>
+{% endblock %}

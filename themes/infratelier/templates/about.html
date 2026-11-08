@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% set seo_kind = "about" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% from "partials/macros.html" import icon, breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <p class="eyebrow">À propos</p>
+    <h1>{{ page.heading or page.title }}</h1>
+    {% if page.lead %}<p class="lead">{{ page.lead|fr }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="prose">
+      {{ page.content|safe|fr }}
+    </div>
+    <aside>
+      <figure class="about-portrait">
+        <img src="{{ SITEURL }}{{ BUSINESS.portrait }}" alt="Portrait dessiné de Florian Grignon" width="715" height="715" decoding="async">
+        <figcaption>Florian Grignon</figcaption>
+      </figure>
+      <ul class="facts">
+        <li><strong>{{ BUSINESS.legal_name }}</strong>Cabinet indépendant basé à {{ BUSINESS.locality }}</li>
+        <li><strong>Formations et accompagnement</strong>Cloud, Kubernetes, Linux, automatisation</li>
+        <li><strong>Auteur</strong><a href="{{ BOOK.url }}{{ BOOK.utm_section }}">{{ BOOK.title }}</a> ({{ BOOK.edition }})</li>
+        <li><strong>Où{{ " ?"|fr }}</strong>Partout en France, sur site ou à distance</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+{% include "partials/book_section.html" %}
+
+<section class="section">
+  <div class="container">
+    {% set cta_title = "Travaillons ensemble" %}
+    {% set cta_text = "Une formation, un audit, un projet d'infrastructure à construire ou à remettre d'aplomb ? Écrivez-moi." %}
+    {% include "partials/cta.html" %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,79 @@
+{#
+  Base layout. Leaf templates set these variables at top level (all optional):
+    seo_title, seo_description, seo_path, seo_kind, seo_crumbs, seo_image,
+    seo_type, seo_robots, seo_published, seo_modified, book_dialog ("off")
+  Pages and articles get sensible defaults from their metadata below.
+#}
+{% from "partials/macros.html" import icon, brand with context %}
+{%- if page is defined and page -%}
+  {%- set _obj = page -%}
+{%- elif article is defined and article -%}
+  {%- set _obj = article -%}
+{%- else -%}
+  {%- set _obj = none -%}
+{%- endif -%}
+{%- set _title = seo_title if seo_title is defined else ((_obj.meta_title if _obj and _obj.meta_title else ((_obj.title ~ " | " ~ SITENAME) if _obj else SITENAME))) -%}
+{%- set _description = seo_description if seo_description is defined else (_obj.description if _obj and _obj.description else BUSINESS.description) -%}
+{%- set _path = seo_path if seo_path is defined else (_obj.url if _obj else "") -%}
+{%- set _canonical = _path|absolute(SITE_ORIGIN) -%}
+{%- set _image = (seo_image if seo_image is defined else (_obj.image if _obj and _obj.image else BUSINESS.og_image))|absolute(SITE_ORIGIN) -%}
+{%- set _robots = seo_robots if seo_robots is defined else (_obj.robots if _obj and _obj.robots else "index, follow, max-image-preview:large, max-snippet:-1") -%}
+{%- set _og_type = seo_type if seo_type is defined else ("article" if article is defined and article else "website") -%}
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ _title|fr }}</title>
+  <meta name="description" content="{{ _description|striptags|fr }}">
+  <meta name="robots" content="{{ _robots }}">
+  <link rel="canonical" href="{{ _canonical }}">
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="theme-color" content="#fbf8f3">
+
+  <meta property="og:type" content="{{ _og_type }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ SITENAME }}">
+  <meta property="og:title" content="{{ _title|fr }}">
+  <meta property="og:description" content="{{ _description|striptags|fr }}">
+  <meta property="og:url" content="{{ _canonical }}">
+  <meta property="og:image" content="{{ _image }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Infratelier — formations et accompagnement en infrastructure Cloud, Kubernetes et Linux">
+  {% if seo_published is defined and seo_published %}<meta property="article:published_time" content="{{ seo_published }}">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ _title|fr }}">
+  <meta name="twitter:description" content="{{ _description|striptags|fr }}">
+  <meta name="twitter:image" content="{{ _image }}">
+
+  <link rel="preload" href="{{ SITEURL }}/theme/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ SITEURL }}/theme/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/site.css?v={{ ASSET_VERSION }}">
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+
+  <link rel="icon" href="{{ SITEURL }}/favicon.ico" sizes="32x32">
+  <link rel="icon" href="{{ SITEURL }}/theme/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ SITEURL }}/theme/img/apple-touch-icon.png">
+  <link rel="manifest" href="{{ SITEURL }}/site.webmanifest">
+  {% if FEED_ALL_ATOM and articles %}<link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} — articles" href="{{ FEED_DOMAIN or SITEURL }}/{{ FEED_ALL_ATOM }}">{% endif %}
+
+  {{ jsonld(SITE_ORIGIN, _path, _title, _description|striptags,
+            kind=(seo_kind if seo_kind is defined else (_obj.kind if _obj and _obj.kind else ("article" if article is defined and article else "page"))),
+            crumbs=(seo_crumbs if seo_crumbs is defined else none),
+            date_published=(seo_published if seo_published is defined else none),
+            date_modified=(seo_modified if seo_modified is defined else (_obj.modified.strftime("%Y-%m-%d") if _obj and _obj.modified else none)),
+            image=(seo_image if seo_image is defined else none)) }}
+  {% block head %}{% endblock %}
+</head>
+<body{% if (book_dialog is defined and book_dialog == "off") or (_obj and _obj.book_dialog == "off") %} data-book-dialog="off"{% endif %}>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  {% include "partials/header.html" %}
+  <main id="contenu">
+    {% block content %}{% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
+  {% include "partials/book_dialog.html" %}
+  <script src="{{ SITEURL }}/theme/js/site.js?v={{ ASSET_VERSION }}" defer></script>
+</body>
+</html>

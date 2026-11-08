@@ -1,0 +1,23 @@
+{%- set _current = (page.slug if page is defined and page else ("blog" if (article is defined and article) or (articles_page is defined) else "")) -%}
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ SITEURL }}/" aria-label="Infratelier — accueil">{{ brand("h") }}</a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      {{ icon("menu") }}<span>Menu</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+      <ul>
+        {% for slug, label in NAV %}
+        <li><a href="{{ SITEURL }}/{{ slug }}/"{% if _current == slug %} aria-current="page"{% endif %}>{{ label }}</a></li>
+        {% endfor %}
+        {% if articles %}
+        <li><a href="{{ SITEURL }}/{{ INDEX_URL }}"{% if _current == "blog" %} aria-current="page"{% endif %}>Blog</a></li>
+        {% endif %}
+        <li><a class="nav-external" href="{{ BOOK.url }}{{ BOOK.utm_section }}">Le livre</a></li>
+        <li><a class="btn btn-primary btn-small" href="{{ SITEURL }}/contact/"{% if _current == "contact" %} aria-current="page"{% endif %}>Me contacter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

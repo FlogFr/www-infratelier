@@ -1,0 +1,6 @@
+<ul class="tech-grid" aria-label="Technologies">
+  {% for name, file in TECHNOLOGIES %}
+  <li><img src="{{ SITEURL }}/assets/img/{{ file }}" alt="{{ name }}" title="{{ name }}" width="200" height="40" loading="lazy" decoding="async"></li>
+  {% endfor %}
+</ul>
+<p class="tech-note">{{ "Et bien sûr Linux, le socle de tout le reste, ainsi que Bash, Ansible, Helm, Docker et bien d'autres outils du quotidien."|fr }}</p>

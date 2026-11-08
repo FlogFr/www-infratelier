@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set seo_robots = "noindex, follow" %}
+{% set seo_path = "404.html" %}
+{% set book_dialog = "off" %}
+{% from "partials/macros.html" import icon with context %}
+
+{% block content %}
+<section class="not-found">
+  <div class="container container-narrow">
+    <p class="big" aria-hidden="true">404</p>
+    <h1>{{ page.heading or page.title }}</h1>
+    <div class="muted">{{ page.content|safe|fr }}</div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="{{ SITEURL }}/">Retour à l'accueil {{ icon("arrow", "icon-arrow") }}</a>
+      <a class="btn btn-ghost" href="{{ SITEURL }}/formations/">Les formations</a>
+      <a class="btn btn-ghost" href="{{ SITEURL }}/accompagnement/">L'accompagnement</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

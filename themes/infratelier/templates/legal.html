@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% set book_dialog = "off" %}
+{% from "partials/macros.html" import breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <h1>{{ page.title }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose">
+      <h2>Éditeur du site</h2>
+      <p>
+        Le site {{ SITE_ORIGIN|replace("https://", "") }} est édité par <strong>{{ BUSINESS.name }}</strong>, {{ LEGAL.form }}{% if LEGAL.capital %} au capital de {{ LEGAL.capital }}{% endif %}.<br>
+        {% if LEGAL.address %}Siège social{{ " :"|fr }} {{ LEGAL.address }}<br>{% else %}Siège social{{ " :"|fr }} {{ BUSINESS.locality }}, {{ BUSINESS.country_name }}<br>{% endif %}
+        {% if LEGAL.rcs %}Immatriculation{{ " :"|fr }} {{ LEGAL.rcs }}<br>{% elif LEGAL.siren %}SIREN{{ " :"|fr }} {{ LEGAL.siren }}<br>{% endif %}
+        {% if LEGAL.vat %}TVA intracommunautaire{{ " :"|fr }} {{ LEGAL.vat }}<br>{% endif %}
+        Contact{{ " :"|fr }} <a href="mailto:{{ BUSINESS.email }}">{{ BUSINESS.email }}</a>
+      </p>
+      <p>Directeur de la publication{{ " :"|fr }} {{ LEGAL.publisher }}.</p>
+
+      <h2>Hébergement</h2>
+      <p>
+        {{ LEGAL.host_name }}<br>
+        {{ LEGAL.host_address }}<br>
+        <a href="{{ LEGAL.host_url }}">{{ LEGAL.host_url|replace("https://", "") }}</a>
+      </p>
+
+      {{ page.content|safe|fr }}
+    </div>
+  </div>
+</section>
+{% endblock %}

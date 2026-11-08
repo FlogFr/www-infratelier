@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% from "partials/macros.html" import breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <h1>{{ page.heading or page.title }}</h1>
+    {% if page.lead %}<p class="lead">{{ page.lead|fr }}</p>{% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="prose">
+      {{ page.content|safe|fr }}
+    </div>
+  </div>
+</section>
+{% endblock %}

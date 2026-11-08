@@ -1,0 +1,12 @@
+{# Client testimonials (verbatim quotes from site_data.TESTIMONIALS). #}
+<div class="grid grid-3">
+  {% for t in (testimonials_subset if testimonials_subset is defined else TESTIMONIALS) %}
+  <figure class="card testimonial">
+    <blockquote><p>{{ t.quote|fr }}</p></blockquote>
+    <figcaption>
+      <img src="{{ SITEURL }}{{ t.photo }}" alt="" width="65" height="65" loading="lazy" decoding="async">
+      <span><cite>{{ t.name }}</cite><span class="role">{{ t.role }}</span></span>
+    </figcaption>
+  </figure>
+  {% endfor %}
+</div>

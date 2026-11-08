@@ -1,0 +1,24 @@
+{#- XML sitemap, written to /sitemap.xml (SITEMAP_SAVE_AS). Lists every indexable URL. -#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for p in pages|sort(attribute="url") if p.robots is not defined or "noindex" not in p.robots %}
+  <url>
+    <loc>{{ p.url|absolute(SITE_ORIGIN) }}</loc>
+{% if p.modified %}
+    <lastmod>{{ p.modified.strftime("%Y-%m-%d") }}</lastmod>
+{% endif %}
+  </url>
+{% endfor %}
+{% if articles %}
+  <url>
+    <loc>{{ INDEX_URL|absolute(SITE_ORIGIN) }}</loc>
+    <lastmod>{{ (articles[0].modified or articles[0].date).strftime("%Y-%m-%d") }}</lastmod>
+  </url>
+{% for a in articles %}
+  <url>
+    <loc>{{ a.url|absolute(SITE_ORIGIN) }}</loc>
+    <lastmod>{{ (a.modified or a.date).strftime("%Y-%m-%d") }}</lastmod>
+  </url>
+{% endfor %}
+{% endif %}
+</urlset>

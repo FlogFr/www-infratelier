@@ -1,0 +1,8 @@
+# Build output (published to the gh-pages branch, never committed here)
+output/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+*.swp

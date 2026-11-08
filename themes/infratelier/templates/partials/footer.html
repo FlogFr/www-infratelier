@@ -1,0 +1,47 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand" href="{{ SITEURL }}/" aria-label="Infratelier — accueil">{{ brand("f") }}</a>
+        <p>{{ BUSINESS.tagline|fr }}. Formations Cloud, Kubernetes et Linux, et accompagnement sur mesure pour des infrastructures fiables, sobres et maîtrisées.</p>
+      </div>
+
+      <div>
+        <h2>Le site</h2>
+        <ul>
+          <li><a href="{{ SITEURL }}/">Accueil</a></li>
+          {% for slug, label in NAV %}
+          <li><a href="{{ SITEURL }}/{{ slug }}/">{{ label }}</a></li>
+          {% endfor %}
+          {% if articles %}<li><a href="{{ SITEURL }}/{{ INDEX_URL }}">Blog</a></li>{% endif %}
+          <li><a href="{{ SITEURL }}/contact/">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Formations</h2>
+        <ul>
+          {% for t in TRAININGS[:5] %}
+          <li><a href="{{ SITEURL }}/formations/#{{ t.id }}">{{ t.short|fr }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          <li><a href="mailto:{{ BUSINESS.email }}">{{ BUSINESS.email }}</a></li>
+          <li>{{ BUSINESS.locality }}, {{ BUSINESS.country_name }}</li>
+          <li>Interventions partout en France et à distance</li>
+          <li><a href="{{ BOOK.url }}{{ BOOK.utm_section }}">{{ BOOK.title }}</a></li>
+          {% for url in BUSINESS.same_as %}<li><a href="{{ url }}" rel="me">{{ url|replace("https://", "")|replace("www.", "") }}</a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="mb-0">© {{ CURRENT_YEAR }} {{ BUSINESS.legal_name }} — Nantes, France</p>
+      <p class="mb-0"><a href="{{ SITEURL }}/mentions-legales/">Mentions légales</a></p>
+    </div>
+  </div>
+</footer>

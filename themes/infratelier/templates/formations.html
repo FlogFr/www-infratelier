@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% set seo_kind = "formations" %}
+{% set seo_crumbs = [(page.title, page.url)] %}
+{% from "partials/macros.html" import icon, breadcrumb with context %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    {{ breadcrumb([(page.title, page.url)]) }}
+    <p class="eyebrow">Formations</p>
+    <h1>{{ page.heading or page.title }}</h1>
+    <div class="lead">{{ page.content|safe|fr }}</div>
+    <div class="btn-row" style="margin-top:24px">
+      <a class="btn btn-primary" href="{{ SITEURL }}/contact/">Demander un programme {{ icon("arrow", "icon-arrow") }}</a>
+      <a class="btn btn-ghost" href="#catalogue">Voir le catalogue</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight" aria-labelledby="formats-titre">
+  <div class="container">
+    <h2 id="formats-titre" class="visually-hidden">Format des formations</h2>
+    <div class="grid grid-4 formats">
+      {% for f in TRAINING_FORMATS %}
+      <div class="card">
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.text|fr }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="catalogue" aria-labelledby="catalogue-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Catalogue</p>
+      <h2 id="catalogue-titre">Les thèmes de formation</h2>
+      <p>{{ "Chaque thème est un point de départ : nous construisons ensemble le programme, la durée et le niveau qui conviennent à votre équipe. Les thèmes peuvent se combiner."|fr }}</p>
+    </div>
+    <div class="grid grid-catalogue">
+      {% for t in TRAININGS %}
+      <article class="card training" id="{{ t.id }}">
+        <span class="tag">{{ t.family }}</span>
+        <h3>{{ t.title|fr }}</h3>
+        <p class="summary">{{ t.summary|fr }}</p>
+        <dl>
+          <dt>Pour qui{{ " ?"|fr }}</dt>
+          <dd>{{ t.audience|fr }}</dd>
+        </dl>
+        <ul class="checklist">
+          {% for topic in t.topics %}<li>{{ topic|fr }}</li>{% endfor %}
+        </ul>
+        <a class="link-arrow" href="mailto:{{ BUSINESS.email }}?subject={{ ('Formation : ' ~ t.title)|urlencode }}">Demander un devis {{ icon("arrow") }}</a>
+      </article>
+      {% endfor %}
+      <article class="card training training-custom" id="sur-mesure">
+        <span class="tag">Sur mesure</span>
+        <h3>Votre programme, à la carte</h3>
+        <p class="summary">{{ "Un besoin qui ne rentre dans aucune case ? Nous combinons plusieurs thèmes, ou construisons un programme dédié à vos outils et à votre infrastructure."|fr }}</p>
+        <a class="link-arrow" href="{{ SITEURL }}/contact/">Construire mon programme {{ icon("arrow") }}</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="deroulement-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Déroulement</p>
+      <h2 id="deroulement-titre">Comment se construit une formation</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Échanger</h3><p>{{ "Nous faisons le point sur votre contexte, vos outils, le niveau des participants et vos objectifs."|fr }}</p></li>
+      <li><h3>Proposer</h3><p>{{ "Je vous propose un programme sur mesure, avec sa durée et ses modalités."|fr }}</p></li>
+      <li><h3>Préparer</h3><p>{{ "Je prépare les supports et des exercices au plus proche de votre environnement."|fr }}</p></li>
+      <li><h3>Former</h3><p>{{ "En présentiel ou à distance, avec une large place à la pratique et aux questions."|fr }}</p></li>
+      <li><h3>Prolonger</h3><p>{{ "Vos équipes repartent avec les supports, et je reste disponible pour la suite."|fr }}</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="faq-titre">
+  <div class="container container-narrow">
+    <div class="section-head center">
+      <p class="eyebrow">Questions fréquentes</p>
+      <h2 id="faq-titre">Vos questions sur les formations</h2>
+    </div>
+    <div class="faq">
+      {% for item in TRAINING_FAQ %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ item.q|fr }}</summary>
+        <p>{{ item.a|fr }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/book_section.html" %}
+
+<section class="section">
+  <div class="container">
+    {% set cta_title = "Envie de former votre équipe ?" %}
+    {% set cta_text = "Dites-moi qui vous souhaitez former, sur quel sujet et à quelle échéance : je vous propose un programme sur mesure." %}
+    {% include "partials/cta.html" %}
+  </div>
+</section>
+{% endblock %}

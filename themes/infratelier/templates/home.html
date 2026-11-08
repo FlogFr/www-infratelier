@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% set seo_kind = "home" %}
+{% set seo_path = "" %}
+{% from "partials/macros.html" import icon with context %}
+
+{% block head %}
+  <link rel="preload" as="image" href="{{ SITEURL }}{{ BUSINESS.portrait }}" type="image/webp">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Expert indépendant en infrastructure</p>
+      <h1>L’infrastructure Cloud &amp; Linux <em class="accent">sur mesure</em>, de A&nbsp;à&nbsp;Z.</h1>
+      <div class="hero-lead">{{ page.content|safe|fr }}</div>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="{{ SITEURL }}/contact/">Parlons de votre projet {{ icon("arrow", "icon-arrow") }}</a>
+        <a class="btn btn-ghost" href="{{ SITEURL }}/formations/">Voir les formations</a>
+      </div>
+      <ul class="proof-bar">
+        <li>{{ icon("school") }}Formateur Cloud, Kubernetes et Linux</li>
+        <li>{{ icon("book") }}Auteur de <em>{{ BOOK.title }}</em></li>
+        <li>{{ icon("pin") }}Nantes · partout en France · à distance</li>
+      </ul>
+    </div>
+
+    <div class="hero-figure">
+      <figure class="hero-photo">
+        <img src="{{ SITEURL }}{{ BUSINESS.portrait }}" alt="Portrait dessiné de Florian Grignon, fondateur d'Infratelier" width="715" height="715" fetchpriority="high" decoding="async">
+        <figcaption>Florian Grignon</figcaption>
+      </figure>
+      <a class="hero-badge" href="{{ BOOK.url }}{{ BOOK.utm_section }}">
+        <img src="{{ SITEURL }}{{ BOOK.cover }}" alt="" width="{{ BOOK.cover_width }}" height="{{ BOOK.cover_height }}" loading="lazy" decoding="async">
+        <span><strong>{{ BOOK.title }}</strong><span class="nowrap">Mon livre sur Kubernetes ↗</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="offres-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Ce que je fais</p>
+      <h2 id="offres-titre">Deux façons de travailler ensemble</h2>
+      <p>{{ "Faire monter vos équipes en compétence, ou faire évoluer votre infrastructure avec elles : je m'adapte à votre besoin, jamais l'inverse."|fr }}</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="card offer">
+        <p class="offer-num">01 — Former</p>
+        <h3>Formations Cloud, Kubernetes et Linux</h3>
+        <p>{{ "Des formations sur mesure, en présentiel ou à distance, pour que vos équipes comprennent et maîtrisent les technologies qu'elles utilisent."|fr }}</p>
+        <ul class="checklist">
+          <li>Kubernetes, pour les développeurs comme pour les administrateurs</li>
+          <li>Administration système Linux</li>
+          <li>Google Cloud, AWS, OpenTofu et Terraform</li>
+          <li>Observabilité, CI/CD et GitOps</li>
+        </ul>
+        <a class="link-arrow" href="{{ SITEURL }}/formations/">Découvrir les formations {{ icon("arrow") }}</a>
+      </article>
+      <article class="card offer">
+        <p class="offer-num">02 — Accompagner</p>
+        <h3>Accompagnement et optimisation d'infrastructure</h3>
+        <p>{{ "Audit, conception, migration, fiabilisation : j'interviens à vos côtés pour une infrastructure qui répond à vos critères, et à personne d'autre."|fr }}</p>
+        <ul class="checklist">
+          <li>Audit et diagnostic de l'existant</li>
+          <li>Optimisation des coûts cloud</li>
+          <li>Plateformes Kubernetes fiables et sécurisées</li>
+          <li>Automatisation : Infrastructure as Code, CI/CD</li>
+        </ul>
+        <a class="link-arrow" href="{{ SITEURL }}/accompagnement/">Découvrir l'accompagnement {{ icon("arrow") }}</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="approche-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">L'approche artisanale</p>
+      <h2 id="approche-titre">Du sur-mesure, de l'écoute à la transmission</h2>
+      <p>{{ "Un artisan ne vend pas un produit sur étagère : il comprend votre besoin, puis conçoit, réalise et ajuste une pièce unique. C'est ainsi que je travaille l'infrastructure, avec un seul interlocuteur du début à la fin."|fr }}</p>
+    </div>
+    <ol class="steps">
+      {% for step in PROCESS_STEPS %}
+      <li>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.text|fr }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="craft-quote">{{ "« La meilleure infrastructure n'est pas la plus à la mode : c'est celle que votre équipe comprend, maîtrise et fait vivre. »"|fr }}</p>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="criteres-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Vos critères</p>
+      <h2 id="criteres-titre">Une infrastructure à vos critères</h2>
+      <p>{{ "Budget, performance, sécurité, conformité… Vous fixez les priorités ; je conçois l'infrastructure qui y répond, sans compromis inutile."|fr }}</p>
+    </div>
+    <div class="criteria">
+      {% for title, text in CRITERIA %}
+      <div class="criterion">
+        <h3>{{ title }}</h3>
+        <p>{{ text|fr }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="avis-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Ils m'ont fait confiance</p>
+      <h2 id="avis-titre">Ce qu'en disent mes clients</h2>
+    </div>
+    {% include "partials/testimonials.html" %}
+  </div>
+</section>
+
+<section class="section section-tight section-alt" aria-labelledby="techno-titre">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Boîte à outils</p>
+      <h2 id="techno-titre">Les technologies que je forme et que je déploie</h2>
+      <p>{{ "Des outils éprouvés, majoritairement open source, choisis pour votre contexte : pas parce qu'ils sont à la mode."|fr }}</p>
+    </div>
+    {% include "partials/technologies.html" %}
+  </div>
+</section>
+
+{% include "partials/book_section.html" %}
+
+<section class="section">
+  <div class="container">
+    {% include "partials/cta.html" %}
+  </div>
+</section>
+{% endblock %}

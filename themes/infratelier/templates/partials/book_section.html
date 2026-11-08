@@ -1,0 +1,17 @@
+{% from "partials/macros.html" import icon with context %}
+<section class="section book" aria-labelledby="livre-titre">
+  <div class="container book-grid">
+    <div class="book-cover">
+      <img src="{{ SITEURL }}{{ BOOK.cover }}" alt="Couverture du livre {{ BOOK.title }}, {{ BOOK.edition }}, par Florian Grignon" width="{{ BOOK.cover_width }}" height="{{ BOOK.cover_height }}" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <p class="eyebrow">Le livre</p>
+      <h2 id="livre-titre">{{ BOOK.title }}</h2>
+      <p>{{ BOOK.pitch|fr }}</p>
+      <p>{{ "J'ai écrit ce livre comme je conçois une infrastructure : avec soin, en allant au fond des choses, et pour transmettre. Il est écrit en français et auto-publié."|fr }}</p>
+      <div class="btn-row">
+        <a class="btn btn-light" href="{{ BOOK.url }}{{ BOOK.utm_section }}">Découvrir le livre {{ icon("external") }}</a>
+      </div>
+    </div>
+  </div>
+</section>
