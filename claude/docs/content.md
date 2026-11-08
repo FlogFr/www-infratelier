@@ -37,8 +37,8 @@ pages, the instructions under the e-mail on contact.
 
 | Name | Shown on |
 | --- | --- |
-| `BUSINESS` | everywhere (footer, JSON-LD); `same_as` = public profiles (LinkedIn, Malt…) |
-| `LEGAL` | mentions légales — fill `capital`, `address`, `siren`, `rcs`, `vat` |
+| `BUSINESS` | everywhere (footer, JSON-LD); `street_address` only in JSON-LD + legal page; `same_as` = public profiles (LinkedIn, Malt…) |
+| `LEGAL` | mentions légales — `address`, `siren`, `rcs_city` filled; `capital` and `vat` still empty (hidden until set) |
 | `NAV` | header and footer navigation |
 | `BOOK` | dialog, book section, hero badge, about |
 | `TRAININGS` | formations catalogue (+ footer, + JSON-LD Course list). `id` = anchor `/formations/#id` |

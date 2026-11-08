@@ -106,6 +106,7 @@ def _business(origin, ids):
         "image": absolute_url(b["og_image"], origin),
         "address": {
             "@type": "PostalAddress",
+            "streetAddress": b["street_address"],
             "addressLocality": b["locality"],
             "postalCode": b["postal_code"],
             "addressRegion": b["region"],
@@ -116,6 +117,12 @@ def _business(origin, ids):
         "knowsAbout": d.EXPERTISE,
         "knowsLanguage": "fr",
     }
+    if d.LEGAL.get("siren"):
+        node["identifier"] = {
+            "@type": "PropertyValue",
+            "propertyID": "SIREN",
+            "value": d.LEGAL["siren"].replace(" ", ""),
+        }
     if b.get("same_as"):
         node["sameAs"] = b["same_as"]
     return node

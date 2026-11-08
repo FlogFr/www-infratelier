@@ -33,7 +33,10 @@ Newest first. One entry per non-obvious choice: context, decision, consequence.
   from one place.
 - **Custom sitemap template** instead of the `pelican-sitemap` plugin: full
   control (exclude noindex pages, `lastmod` from `Modified:`), no dependency.
-- **Legal notice fields left empty** (SIREN, capital, address): the public
-  registry was not reachable from the build environment and nothing must be
-  invented. They render automatically once filled in `LEGAL`.
+- **Legal notice fields**: SIREN `920 555 083` and registered office
+  (80 rue des Hauts-Pavés, 44000 Nantes) provided by the owner; RCS shown as
+  "RCS de Nantes" (registry of the registered office). Share capital and VAT
+  number are still unknown and stay hidden until filled in `LEGAL`. The
+  street address is published only on the legal page and in JSON-LD (local
+  SEO, NAP consistency), not in the footer.
 - **Testimonials are verbatim**, including their original wording.

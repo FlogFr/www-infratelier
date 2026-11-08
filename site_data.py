@@ -24,6 +24,7 @@ BUSINESS = {
         "votre infrastructure."
     ),
     "email": "contact@infratelier.com",
+    "street_address": "80 rue des Hauts-Pavés",
     "locality": "Nantes",
     "postal_code": "44000",
     "region": "Pays de la Loire",
@@ -45,9 +46,9 @@ BUSINESS = {
 LEGAL = {
     "form": "Société par actions simplifiée unipersonnelle (SASU)",
     "capital": None,  # e.g. "1 000 €"
-    "address": None,  # registered office, e.g. "1 rue Exemple, 44000 Nantes"
-    "siren": None,  # e.g. "123 456 789"
-    "rcs": None,  # e.g. "RCS Nantes 123 456 789"
+    "address": "80 rue des Hauts-Pavés, 44000 Nantes",  # registered office
+    "siren": "920 555 083",
+    "rcs_city": "Nantes",  # trade register (RCS) of the registered office
     "vat": None,  # e.g. "FR00123456789"
     "publisher": "Florian Grignon, Président",
     "host_name": "GitHub, Inc. (GitHub Pages)",

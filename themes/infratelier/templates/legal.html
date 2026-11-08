@@ -18,7 +18,7 @@
       <p>
         Le site {{ SITE_ORIGIN|replace("https://", "") }} est édité par <strong>{{ BUSINESS.name }}</strong>, {{ LEGAL.form }}{% if LEGAL.capital %} au capital de {{ LEGAL.capital }}{% endif %}.<br>
         {% if LEGAL.address %}Siège social{{ " :"|fr }} {{ LEGAL.address }}<br>{% else %}Siège social{{ " :"|fr }} {{ BUSINESS.locality }}, {{ BUSINESS.country_name }}<br>{% endif %}
-        {% if LEGAL.rcs %}Immatriculation{{ " :"|fr }} {{ LEGAL.rcs }}<br>{% elif LEGAL.siren %}SIREN{{ " :"|fr }} {{ LEGAL.siren }}<br>{% endif %}
+        {% if LEGAL.siren %}SIREN{{ " :"|fr }} {{ LEGAL.siren }}{% if LEGAL.rcs_city %}, immatriculée au RCS de {{ LEGAL.rcs_city }}{% endif %}<br>{% endif %}
         {% if LEGAL.vat %}TVA intracommunautaire{{ " :"|fr }} {{ LEGAL.vat }}<br>{% endif %}
         Contact{{ " :"|fr }} <a href="mailto:{{ BUSINESS.email }}">{{ BUSINESS.email }}</a>
       </p>

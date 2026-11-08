@@ -51,7 +51,8 @@ preloader and ~27 CSS/JS files including jQuery. All removed.
 1. **Google Search Console** + **Bing Webmaster Tools**: verify the domain
    (DNS TXT), submit `https://infratelier.com/sitemap.xml`, request indexing.
 2. **Google Business Profile** for Infratelier (Nantes) — strong local signal.
-3. Fill `LEGAL` (SIREN, RCS, capital, address) — legal requirement, also trust.
+3. Fill the remaining `LEGAL` fields: share capital (`capital`) and, if VAT
+   registered, the intra-EU VAT number (`vat`). SIREN and address are done.
 4. Add public profiles to `BUSINESS.same_as` (LinkedIn, Malt, GitHub…) and
    link back to infratelier.com from them.
 5. Ask theartofkubernetes.com to link to infratelier.com (author bio).

@@ -75,7 +75,7 @@ Partials: `header`, `footer`, `book_dialog`, `testimonials`, `technologies`,
 
 Every page outputs one `@graph` with stable `@id`s:
 
-- `/#business` — `ProfessionalService` (name, legal name, address Nantes, email, logo, areaServed FR, knowsAbout)
+- `/#business` — `ProfessionalService` (name, legal name, full postal address, SIREN `identifier`, email, logo, areaServed FR, knowsAbout)
 - `/a-propos/#florian-grignon` — `Person` (founder, worksFor business)
 - `/#website` — `WebSite`
 - `<url>#webpage` — `WebPage` / `AboutPage` / `ContactPage` / `CollectionPage` / `WebPage+FAQPage` (formations)
