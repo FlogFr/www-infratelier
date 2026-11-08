@@ -1,0 +1,862 @@
+/*================================================
+Default CSS
+=================================================*/
+$main-color: #ffb607;
+$black-color: #ffffff;
+$body-color:#ffffff;
+$optional-color: #ffffff;
+
+// Switch css
+.switch-box {
+    position: fixed;
+    z-index: 1;
+    left: 3%;
+    bottom: 63px;
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #4d4949;
+        transition: 0.4s;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 30px;
+            width: 30px;
+            left: 2.5px;
+            bottom: 4px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            transition: 0.4s;
+            box-shadow: 0 0px 15px #2020203d;
+            background: url(../../assets/img/night.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    input:checked + .slider {
+        background-color: #cbc1c1;
+    }
+    input:focus + .slider {
+        background-color: #4d4949;
+    }
+    input:checked + .slider:before {
+        transform: translateX(24px);
+        background: url(../img/sunny.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .slider {
+        &.round {
+            border-radius: 50px;
+
+            &:before {
+                border-radius: 50%;
+            } 
+        }
+    }
+}
+
+// Dark Style CSS
+.theme-dark {
+    body {
+        background-color: #000000;
+        color: #f1f1f1;
+    }
+    p {
+        color: #f1f1f1;
+        
+        a {
+            color: #f1f1f1 !important;
+
+            &:hover {
+                color: $main-color !important;
+            }
+        }
+    }
+    .f5f6fa-bg-color {
+        background-color: #0e0e0e;
+    }
+    .ebeef5-bg-color {
+        background-color: #202020;
+    }
+    a {
+        color: $body-color;
+    }
+    
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        color: $black-color !important;
+
+        a {
+            color: $black-color !important;
+
+            &:hover {
+                color: $main-color !important;
+            }
+        }
+    }
+
+    //PreLoader
+    .preloader {
+        background-color: #0e0e0e;
+    }
+
+
+    //Navbar
+    .navbar-area {
+        &.is-sticky {
+            background-color: #161616 !important;
+        }
+        .others-option {
+            .cart-icon {
+                a {
+                    i {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+    .main-nav {
+        background-color: #0b0a0a;
+        .navbar {
+            .navbar-brand {
+                .white-logo {
+                    display: block;
+                }
+                .main-logo {
+                    display: none;
+                }
+            }
+            .navbar-nav {
+                .nav-item {
+                    a {
+                        color: $body-color;
+
+                        &:hover, &:focus, &.active {
+                            color: $main-color !important;
+                        }
+                    }
+                    &:hover, &:focus, &.active {
+                        a {
+                            color: $main-color !important;
+                        }
+                    }
+                    .dropdown-menu {
+                        background: #0e0e0e;
+                        
+                        li {
+                            a {
+                                color: $body-color !important;
+                                border-bottom: 1px dashed #000000;
+                                
+                                &:hover, &:focus, &.active {
+                                    color: $main-color !important;
+                                }
+                            }
+                            .dropdown-menu {
+                                li {
+                                    a {
+                                        color: $body-color !important;
+                                        border-bottom: 1px dashed #000000;
+
+                                        &:hover, &:focus, &.active {
+                                            color: $main-color !important;
+                                        }
+                                    }
+                                    .dropdown-menu {
+                                        li {
+                                            a {
+                                                color: $body-color;
+
+                                                &:hover, &:focus, &.active {
+                                                    color: $main-color ;
+                                                }
+                                            }
+                                            .dropdown-menu {
+                                                li {
+                                                    a {
+                                                        color: $body-color;
+                                                        
+                                                        &:hover, &:focus, &.active {
+                                                            color: $main-color;
+                                                        }
+                                                    }
+                                                    .dropdown-menu {
+                                                        li {
+                                                            a {
+                                                                color: $body-color;
+                                                                
+                                                                &:hover, &:focus, &.active {
+                                                                    color: $main-color;
+                                                                }
+                                                            }
+                                                            .dropdown-menu {
+                                                                li {
+                                                                    a {
+                                                                        color: $body-color;
+                                                                        
+                                                                        &:hover, &:focus, &.active {
+                                                                            color: $main-color;
+                                                                        }
+                                                                    }
+                                                                    .dropdown-menu {
+                                                                        li {
+                                                                            a {
+                                                                                color: $body-color;
+
+                                                                                &:hover, &:focus, &.active {
+                                                                                    color: $main-color;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    &.active {
+                                                                        a {
+                                                                            color: $main-color;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            &.active {
+                                                                a {
+                                                                    color: $main-color;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    &.active {
+                                                        a {
+                                                            color: $main-color;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            &.active {
+                                                a {
+                                                    color: $main-color;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &.active {
+                                        a {
+                                            color: $main-color;
+                                        }
+                                    }
+                                }
+                            }
+                            &.active {
+                                a {
+                                    color: $main-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .others-option {
+                .option-item {
+                    .cart-btn {
+                        a {
+                            color: $body-color;
+                            &:hover {
+                                color: $main-color;
+                            }
+                        }
+                    }
+                    .search-btn-box {
+                        .search-btn {
+                            color: $body-color;
+                            &:hover {
+                                color: $main-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Banner
+    .banner-area-two {
+        background-color: #0e0e0e;
+        .banner-content {
+            p {
+                color: $body-color;
+            }
+        }
+    }
+
+    //Page Title
+    .page-title-area {
+        &::before {
+            background-color: #000000;
+        }
+        .page-title-content {
+            ul {
+                li {
+                    a {
+                        color: $body-color;
+                    }
+                    &::before {
+                        background-color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Education
+    .education-content {
+        ul {
+            li {
+                color: $body-color;
+            }
+        }
+    }
+
+    //Courses
+    .courses-area {
+        background-image: unset;
+        background-color: #000000;
+    }
+    .single-course {
+        background-color: #272626;
+        .course-content {
+            .rating {
+                li {
+                    a {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+    .single-course-area {
+        .single-course-tab {
+            .tabs {
+                background-color: #202020;
+                li {
+                    a {
+                        color:$body-color;
+                    }
+                    &.current {
+                        a {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+        .curriculum-content {
+            ul {
+                li {
+                    background-color: #0e0e0e;
+                    color: $body-color;
+                    &.transparent {
+                        background-color: transparent;
+                    }
+                    .meet-title {
+                        color: $body-color;
+                    }
+                    .meet-time {
+                        .min {
+                            color: #000000 !important;
+                        }
+                        .preview {
+                            color: #000000;
+                        }
+                    }
+                }
+            }
+        }
+        .advisor-content {
+            ul {
+                li {
+                    a {
+                        i {
+                            background-color: #373737;
+                        }
+                    }
+                }
+            }
+        }
+        .review-content {
+            .course-reviews-content {
+                .course-reviews {
+                    li {
+                        span {
+                            color: $body-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Features
+    .feature-wrap {
+        background-color: #3c3b3b;
+    }
+
+    //Enroll
+    .enroll-wrap {
+        background-color: #0e0e0e;
+        .courses-form {
+            .form-group {
+                .form-control {
+                    background-color: #000000;
+                    color: $body-color;
+                }
+                .nice-select {
+                    background-color: #000000;
+                    .list {
+                        background-color: #0e0e0e;
+                    }
+                    .option {
+                        color: $body-color;
+                        background-color: #000000;
+                         background-color: $main-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Teachers
+    .single-teachers {
+        .teachers-content {
+            background-color: #0e0e0e;
+        }
+    }
+    .teachers-area {
+        &::before {
+            background-color: #080707;
+        }
+    }
+    .teachers-area-two {
+        background-image: unset;
+        background-color: #2a2929;
+    }
+
+    //Events
+    .event-area {
+        background-image: unset;
+        background-color: #080707;
+    }
+    .single-event {
+        background-color: #0e0e0e;
+    }
+    .event-area-two {
+        background-image: unset;
+        background-color: #272626;
+        &.event-area-style {
+            .single-tutor {
+                background-color: #000000;
+                p {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    //Feed Back
+    .feedback-area {
+        &.feedback-area-three {
+            &.feedback-area-style {
+                .section-title {
+                    h2 {
+                       color: #000000 !important;
+                    }
+                }
+                .feedback-item {
+                    h3 {
+                        color: #000000 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    //Video 
+    .video-area {
+        &::before {
+            background-color: #080707;
+        }
+    }
+
+    //Discover
+    .discover-area {
+        .discover-img {
+            &::before {
+                background-color: #000000;
+            }
+        }
+    }
+    .discover-content {
+        ul {
+            li {
+                color: $body-color;
+            }
+        }
+    }
+
+    //News
+    .news-listing-content {
+        background-color: #2a2929;
+    }
+    .single-news {
+        background-color: #2a2929;
+    }
+    .single-blog-content {
+        .blog-top-content {
+            blockquote {
+                background-color: #0e0e0e;
+                p {
+                    color: $body-color;
+                }
+            }
+        }
+        .social-wrap {
+            background-color: #0e0e0e;
+            li {
+                span {
+                    color: $body-color;
+                }
+            }
+        }
+        .leave-reply-wrap {
+            .form-group {
+                .form-control {
+                    background-color: #0e0e0e;
+                    color: $body-color;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Account
+    .account-wrap {
+        ul {
+            li {
+                color: $body-color;
+                span {
+                    color: $body-color;
+                }
+            }
+        }
+        .social-content {
+            ul {
+                li {
+                    a {
+                        i {
+                            background-color: #2b2a2a;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .user-area-style {
+        .contact-form-action {
+            form {
+                .form-group {
+                    .form-control {
+                        color: $body-color;
+                        background-color: #0e0e0e;
+                        &::placeholder {
+                            color: $body-color;
+                        }
+                    }
+                }
+                .default-btn {
+                    &.register {
+                        border: 1px solid $body-color;
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Faq
+    .faq-accordion {
+        .accordion {
+            .accordion-title {
+                background-color: #0e0e0e;
+                color: $body-color;
+            }
+        }
+    }
+
+    //Coming soon
+    .coming-soon-area {
+        .coming-soon-content {
+            background-color: rgba(31, 30, 30, 0.9);
+            .newsletter-form {
+                .input-newsletter {
+                    background-color: #000000;
+                    color: $body-color;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Error Area
+    .error-area {
+        background-color: #0e0e0e;
+    }
+
+    //Shop
+    .single-shop {
+        .default-btn {
+            border-color: $body-color;
+            color: $body-color;
+        }
+    }
+    .sidebar-widget {
+        &.search {
+            .search-form {
+                .form-control {
+                    color: $body-color;
+                    background-color: #0e0e0e;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Cart
+    .cart-area {
+        .cart-table {
+            table {
+                thead {
+                    tr {
+                        th {
+                            border-bottom: 1px solid #404041;
+                            color: $body-color;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            color: $body-color;
+                            a {
+                                color: $body-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .coupon-cart {
+            .default-btn {
+                &.update {
+                    border-color: $body-color;
+                    color: $body-color;
+                    float: right;
+                }
+            }
+        }
+        
+    }
+    .cart-totals {
+        ul {
+            li {
+                color: $body-color;
+                span {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    //Cheackout
+    .checkout-area {
+        .billing-details {
+            .form-group {
+                label {
+                    color: $body-color;
+                }
+                .form-control {
+                    background-color: #0e0e0e;
+                    color: $body-color;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+            .form-check {
+                .form-check-label {
+                    color: $body-color;
+                }
+            }
+        }
+    
+    }
+
+    //Single Product
+    .product-details-area {
+        .product-details-desc {
+            .price {
+                color: $body-color;
+            }
+            .product-review {
+                .rating-count {
+                    color: $body-color;
+                }
+            }
+            .product-summery {
+                li {
+                    color: $body-color;
+                }
+            }
+            .social-wrap {
+                li {
+                    color: $body-color;
+                    a {
+                        i {
+                            color: $body-color;
+                        }
+                    }
+                }
+            }
+        }
+        .products-details-tab {
+            .tabs {
+                li {
+                    a {
+                       color: $body-color;
+                    }
+                    &.current {
+                        a {
+                            color: $main-color
+                         }
+                    }
+                }
+            }
+            .tab_content {
+                .tabs_item {
+                    .products-details-tab-content {
+                        .product-review-form {
+                            .review-comments {
+                                .review-item {
+                                    .review-report-link {
+                                        color: $body-color;
+                                    }
+                                }
+                            }
+                        }
+                        .product-review-form {
+                            .review-form {
+                                form {
+                                    .form-group {
+                                        label {
+                                            color: $body-color;
+                                        }
+                                        .form-control {
+                                            color: $body-color;
+                                            background-color: #0e0e0e;
+                                            &::placeholder {
+                                                color: $body-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Contact
+    .main-contact-area {
+        .contact-wrap {
+            .form-control {
+                background-color: #0e0e0e;
+                border-color: 1px solid #373636;
+                color: $body-color;
+            }
+        }
+    }
+    .contact-info-area {
+        .single-contact-info {
+            a {
+                color: $body-color;
+            }
+        }
+    }
+
+    //Modal
+    .modal-content {
+        background-color: #0e0e0e;
+    }
+
+
+    @media only screen and (max-width: 991px) {
+        .mean-container {
+            .mean-bar {
+                background-color: #292828;
+            }
+            a {
+                &.meanmenu-reveal {
+                    span {
+                        background-color: $body-color;
+                    }
+                }
+            }
+        }
+        .mobile-nav {
+            .logo {
+                .main-logo {
+                    display: none;
+                }
+                .white-logo {
+                    display: block;
+                }
+            }
+        }
+        .others-option-for-responsive {
+            .dot-menu {
+                .inner {
+                    .circle {
+                        background-color: $black-color;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}
