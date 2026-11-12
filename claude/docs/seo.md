@@ -39,6 +39,24 @@ metadata; see [../rules/seo.md](../rules/seo.md) for the constraints.
 - Welcome dialog is delayed (1.2 s), dismissible, remembered 30 days, shown as
   a bottom sheet on phones — avoids Google's "intrusive interstitial" pattern.
 
+## Search Console: expected statuses (not errors)
+
+GitHub Pages cannot redirect, so some URL variants answer 200 and rely on the
+canonical. Google lists them as "not indexed"; that is the intended outcome.
+Do **not** "fix" them with JS or meta-refresh redirects (Google would only
+move them to "Page with redirect", and the canonical is the stronger signal).
+
+| Reason in the report (French UI) | Typical URLs | Why it is fine |
+| --- | --- | --- |
+| Alternate page with proper canonical tag (« Autre page avec balise canonique correcte ») | `/index.html`, `/formations/index.html`, `/?utm_…`, `/?livre` | Same file as the canonical URL, whose canonical tag Google accepted. `/index.html` was linked from the 2024 site's menu, so Google keeps recrawling it. |
+| Excluded by 'noindex' tag | `/blog/`, `/404.html` | Intentional (empty blog, error page). |
+| Not found (404) | `/courses.html`, `/about.html`, `/index-2.html`, `/archives.html`, `/tags.html`… | Leftover URLs of the 2024 theme; they never had real content. |
+| Page with redirect | `http://…`, `/formations` (no trailing slash) | GitHub Pages 301s them to the canonical form. |
+
+Act only if a canonical URL itself (one listed in `sitemap.xml`) shows up
+under one of these reasons: then check its `<link rel="canonical">` and
+`robots` meta in the built HTML.
+
 ## What changed vs. the 2024 site (for reference)
 
 The 2024 site had no meta description, no canonical, no structured data,
